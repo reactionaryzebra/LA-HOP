@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-
-import MapInfo from '../MapInfo'
+import React, { Component } from "react";
+import MapInfo from "./MapInfo";
 
 class Map extends Component {
   state = {
-    earthquakes:[]
+    earthquakes: []
+  };
+
+  componentDidMount() {
+    console.log("here");
   }
-
-
-  componentDidMount(){
-    console.log('here')
-    
-  }
-
 
   render() {
     return (
-      
-        <div className="mapContainer">
+      <div className="mapContainer">
         <MapInfo />
-        </div>
-
-      
-    )
+      </div>
+    );
   }
 }
 
