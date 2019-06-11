@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Map from './components/Map'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <Router>
       <Route exact path={ROUTES.LANDING} render={() => <div>Landing</div>} />
-      <Route exact path={ROUTES.REPORT} render={() => <div>Report</div>} />
+      <Route exact path={ROUTES.REPORT} component={Map}/>
       <Route
         exact
         path={ROUTES.CONFIRMATION}
