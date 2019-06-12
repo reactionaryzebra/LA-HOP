@@ -77,7 +77,7 @@ class FormBase extends React.Component {
       descriptionOfSelf,
       reporterInfo,
       newNecessities,
-      status:'contacted and helped! :)',
+      status: "contacted and helped! :)",
       other,
       coordinates: this.props.coordinates
     };
@@ -99,14 +99,14 @@ class FormBase extends React.Component {
     //console.log(this.props.img,'<----this.props.img')
   };
 
-    componentDidMount(){
-        Date.prototype.toDateInputValue = (function() {
-            var local = new Date(this);
-            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-            return local.toJSON().slice(0,10);
-        });
-        document.getElementById('date').value = new Date().toDateInputValue();
-    }
+  componentDidMount() {
+    Date.prototype.toDateInputValue = function() {
+      var local = new Date(this);
+      local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+      return local.toJSON().slice(0, 10);
+    };
+    document.getElementById("date").value = new Date().toDateInputValue();
+  }
 
   render() {
     return (
@@ -226,67 +226,146 @@ class FormBase extends React.Component {
           <br />
         </FormOne>
 
-        <FormOne style={{display:this.state.pageThreeVis}}>
-            
-                <h1>{this.state.english?"Page Three":'Página tres'}</h1>
-                {this.state.showCamera?<Camera pushImgUp={this.props.pushImgUp}/>:undefined}
-                <br/>
-                <button onClick={!this.state.showCamera?()=>{this.setState({showCamera:true})}:()=>{this.setState({showCamera:false})}}>{!this.state.showCamera?'Use Camera':'Hide Camera'}</button>
-                <br/>
-                <br/>
-                <div>or</div>
-                <br/>
-                <input type="file" onChange={this.fileSelectedHandler}/>
-                <button onClick={this.fileUploadHandler}>Upload</button>
-                <br/>
+        <FormOne style={{ display: this.state.pageThreeVis }}>
+          <h1>{this.state.english ? "Page Three" : "Página tres"}</h1>
+          <br />
+          <input type="file" id="image" accept="image/*" capture="camera" />
+          <br />
 
-                <textarea id = "descriptionOfSelf" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Description of self":"descripción de ti mismo"}/>
-                <br/>
-                <input id = "reporterInfo" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Reporter contact info":"informacion de contacto del reportero"}/>
-                <br/>
-                <h5>{this.state.english?'What the reportee needs:':'lo que el reporte necesita'}</h5>
-                
-                <div className="needList">
-                    <div onClick={()=>{!this.state.clothing?this.setState({
-                        clothing:true
-                    }):this.setState({
-                        clothing:false
-                    })}} className={this.state.clothing?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'clothing':'la ropa'}</div>
-                    <div onClick={()=>{!this.state.food?this.setState({
-                        food:true
-                    }):this.setState({
-                        food:false
-                    })}}className={this.state.food?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'food':'comida'}</div>
-                    <div onClick={()=>{!this.state.water?this.setState({
-                        water:true
-                    }):
-                    this.setState({
-                        water:false
-                    })}}className={this.state.water?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'water':'la agua'}</div>
-                    <div onClick={()=>{!this.state.burn?this.setState({
-                        burn:true
-                    }):
-                    this.setState({
-                        burn:false
-                    })}}className={this.state.burn?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'burn medication':'quemar medicación'}</div>
-                    <div onClick={()=>{!this.state.jacket?this.setState({
-                        jacket:true
-                    }):
-                    this.setState({
-                        jacket:false
-                    })}}className={this.state.jacket?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'jacket':'chaqueta'}</div>
-                    <div onClick={()=>{!this.state.shoes?this.setState({
-                        shoes:true
-                    }):
-                    this.setState({
-                        shoes:false
-                    })}}className={this.state.shoes?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'shoes':'los zapatos'}</div>
-                    <input id="other" placeholder={this.state.english?"other:":"otro:"}/>
-                    
-                    <button className="nextButton" style={{display:this.state.pageThreeVis,zIndex:'3000'}} onClick={this.sendItUp}>{this.state.english?'Submit':'Enviar'}</button>
-                </div>
-            </FormOne>
-            <br/>
+          <textarea
+            id="descriptionOfSelf"
+            style={{ display: this.state.pageThreeVis }}
+            placeholder={
+              this.state.english
+                ? "Description of self"
+                : "descripción de ti mismo"
+            }
+          />
+          <br />
+          <input
+            id="reporterInfo"
+            style={{ display: this.state.pageThreeVis }}
+            placeholder={
+              this.state.english
+                ? "Reporter contact info"
+                : "informacion de contacto del reportero"
+            }
+          />
+          <br />
+          <h5>What the reportee needs:</h5>
+
+          <div className="needList">
+            <div
+              onClick={() => {
+                !this.state.clothing
+                  ? this.setState({
+                      clothing: true
+                    })
+                  : this.setState({
+                      clothing: false
+                    });
+              }}
+              className={
+                this.state.clothing ? "homelessNeedsClicked" : "homelessNeeds"
+              }
+            >
+              {this.state.english ? "clothing" : "la ropa"}
+            </div>
+            <div
+              onClick={() => {
+                !this.state.food
+                  ? this.setState({
+                      food: true
+                    })
+                  : this.setState({
+                      food: false
+                    });
+              }}
+              className={
+                this.state.food ? "homelessNeedsClicked" : "homelessNeeds"
+              }
+            >
+              {this.state.english ? "food" : "comida"}
+            </div>
+            <div
+              onClick={() => {
+                !this.state.water
+                  ? this.setState({
+                      water: true
+                    })
+                  : this.setState({
+                      water: false
+                    });
+              }}
+              className={
+                this.state.water ? "homelessNeedsClicked" : "homelessNeeds"
+              }
+            >
+              {this.state.english ? "water" : "la agua"}
+            </div>
+            <div
+              onClick={() => {
+                !this.state.burn
+                  ? this.setState({
+                      burn: true
+                    })
+                  : this.setState({
+                      burn: false
+                    });
+              }}
+              className={
+                this.state.burn ? "homelessNeedsClicked" : "homelessNeeds"
+              }
+            >
+              {this.state.english ? "burn medication" : "quemar medicación"}
+            </div>
+            <div
+              onClick={() => {
+                !this.state.jacket
+                  ? this.setState({
+                      jacket: true
+                    })
+                  : this.setState({
+                      jacket: false
+                    });
+              }}
+              className={
+                this.state.jacket ? "homelessNeedsClicked" : "homelessNeeds"
+              }
+            >
+              {this.state.english ? "jacket" : "chaqueta"}
+            </div>
+            <div
+              onClick={() => {
+                !this.state.shoes
+                  ? this.setState({
+                      shoes: true
+                    })
+                  : this.setState({
+                      shoes: false
+                    });
+              }}
+              className={
+                this.state.shoes ? "homelessNeedsClicked" : "homelessNeeds"
+              }
+            >
+              {this.state.english ? "shoes" : "los zapatos"}
+            </div>
+            <input
+              id="other"
+              placeholder={this.state.english ? "other:" : "otro:"}
+            />
+
+            <button
+              className="nextButton"
+              style={{ display: this.state.pageThreeVis, zIndex: "3000" }}
+              onClick={this.sendItUp}
+            >
+              {this.state.english ? "Submit" : "Enviar"}
+            </button>
+          </div>
+        </FormOne>
+        <br />
         <br />
 
         <button
