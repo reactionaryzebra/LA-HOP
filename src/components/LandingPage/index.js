@@ -50,10 +50,15 @@ const LandingPageBase = props => (
         MAKE A REQUEST
       </button>
       <button>LEARN MORE</button>
-      
-      <button onClick={()=>{props.history.push("/status")}}>CHECK STATUS</button>
+
+      <button
+        onClick={() => {
+          props.history.push("/status");
+        }}
+      >
+        CHECK STATUS
+      </button>
     </div>
-    <input type="file" accept="image/*" capture="camera" />
   </div>
 );
 
