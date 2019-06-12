@@ -82,6 +82,7 @@ class FormBase extends React.Component {
       coordinates: this.props.coordinates
     };
     console.log(objectToSend, "<-----object to send");
+    const here = this
     const { firebase, history } = this.props;
     const imgFile = new File([img], "picture.jpg", { type: "image/jpeg" });
     firebase.storage
@@ -93,6 +94,10 @@ class FormBase extends React.Component {
           .getDownloadURL()
           .then(string => (objectToSend.imageURL = string))
           .then(() => firebase.db.collection("requests").add(objectToSend))
+          .then(function(docRef) {
+            here.props.pushRequestNumberUp(docRef.id);
+            console.log("Document written with ID: ", docRef.id);
+        })
       );
     history.push("/confirmation");
 
