@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 import FollowUp from "../../styles/FollowUp";
 import Input from "../../styles/Input";
+import FormSubmit from "../../styles/FormSubmit";
 
 class FollowupFormBase extends Component {
   state = {
@@ -57,9 +58,9 @@ class FollowupFormBase extends Component {
           onChange={this.handleChange}
           placeholder="Tell us more"
         />
-        <button disabled={isInvalid} type="submit">
+        <FormSubmit disabled={isInvalid} type="submit">
           Submit
-        </button>
+        </FormSubmit>
       </FollowUp>
     );
   }
