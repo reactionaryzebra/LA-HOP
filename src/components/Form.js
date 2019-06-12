@@ -3,13 +3,15 @@ import Camera from './Camera'
 import Map from './Map'
 import styled from 'styled-components'
 import FormOne from '../styles/FormOne'
+import {withFirebase} from '../components/Firebase'
+import {withRouter} from 'react-router-dom'
 const necessities=['food','water','jacket','burn','clothing']
 
 
 
 
  
-class Form extends React.Component {
+class FormBase extends React.Component {
     state = {
         english:true,
         spanish:false,
@@ -80,6 +82,10 @@ class Form extends React.Component {
             coordinates:this.props.coordinates
         }
         console.log(objectToSend,'<-----object to send')
+        const {firebase, history}=this.props
+        firebase.db.collection('requests').add(objectToSend)
+        history.push('/confirmation')
+        
         //console.log(this.props.img,'<----this.props.img')
     }
    
@@ -234,4 +240,5 @@ class Form extends React.Component {
       );
     }
   }
-export default Form
+const Form=withRouter(withFirebase(FormBase))
+  export default Form

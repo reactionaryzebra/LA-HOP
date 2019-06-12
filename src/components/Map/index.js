@@ -1,22 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import MapInfo from "./MapInfo";
 
-class Map extends Component {
-  state = {
-    earthquakes: []
-  };
-
-  componentDidMount() {
-    console.log("here");
-  }
-
-  render() {
-    return (
-      <div className="mapContainer">
-        <MapInfo pushLatLongUp={this.props.pushLatLongUp}/>
-      </div>
-    );
-  }
-}
+class Map extends React.Component {
+  render(){
+    return(
+  <div className="mapContainer">
+    <MapInfo pushLatLongUp={this.props.pushLatLongUp}/>
+  </div>)
+}};
 
 export default Map;

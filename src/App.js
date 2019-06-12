@@ -24,6 +24,7 @@ class AppBase extends React.Component {
   }
 
   pushLatLongUp=(coordinates)=>{
+    console.log(coordinates,'<----coordinates in push LatLongUp')
     this.setState({
       coordinates
     })

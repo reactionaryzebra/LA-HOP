@@ -5,6 +5,7 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 const mapStyles = {
   width: "400px",
   height: "250px"
+  //height:'41%'
 };
 
 export class MapInfo extends Component {
@@ -18,17 +19,21 @@ export class MapInfo extends Component {
   };
   componentWillUnmount(){
     this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
-    console.log(this.state.latitude,'<----this.state.latitude')
+    console.log(this.state,'<----this.state')
   }
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        this.setState({
-          latitude: position.coordinates.latitude,
-          longitude: position.coordinates.longitude
-        });
-      });
+      navigator.geolocation.getCurrentPosition(
+        location =>
+          this.setState({
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            zoom: 15
+          },this.props.pushLatLongUp([/*this.state.latitude*/location.coords.latitude,/*this.state.longitude*/location.coords.longitude])),
+        error => this.setState({ locationError: error }),
+        { timeout: 5000 }
+      );
     } else {
       this.setState({
         locationError: "Your browser does not support location services"
@@ -38,7 +43,8 @@ export class MapInfo extends Component {
 
   render() {
     const { latitude, longitude, zoom } = this.state;
-    console.log(this.state.temp);
+    console.log(this.state,'<----this.state in render');
+    //this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
     return (
       <div>
         <button onClick={this.getGeoLocation}>Location</button>
