@@ -5,6 +5,7 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 const mapStyles = {
   width: "400px",
   height: "250px"
+  //height:'41%'
 };
 
 export class MapInfo extends Component {
@@ -16,6 +17,10 @@ export class MapInfo extends Component {
     temp: null,
     locationError: null
   };
+  componentWillUnmount(){
+    this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
+    console.log(this.state,'<----this.state')
+  }
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
@@ -25,7 +30,7 @@ export class MapInfo extends Component {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
             zoom: 15
-          }),
+          },this.props.pushLatLongUp([/*this.state.latitude*/location.coords.latitude,/*this.state.longitude*/location.coords.longitude])),
         error => this.setState({ locationError: error }),
         { timeout: 5000 }
       );
@@ -38,7 +43,8 @@ export class MapInfo extends Component {
 
   render() {
     const { latitude, longitude, zoom } = this.state;
-    console.log(this.state.temp);
+    console.log(this.state,'<----this.state in render');
+    //this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
     return (
       <div>
         <button onClick={this.getGeoLocation}>Location</button>

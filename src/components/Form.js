@@ -3,13 +3,15 @@ import Camera from './Camera'
 import Map from './Map'
 import styled from 'styled-components'
 import FormOne from '../styles/FormOne'
+import {withFirebase} from '../components/Firebase'
+import {withRouter} from 'react-router-dom'
 const necessities=['food','water','jacket','burn','clothing']
 
 
 
 
  
-class Form extends React.Component {
+class FormBase extends React.Component {
     state = {
         english:true,
         spanish:false,
@@ -76,10 +78,15 @@ class Form extends React.Component {
             newNecessities,
             other,
             
-            img:this.props.img
+            img:this.props.img,
+            coordinates:this.props.coordinates
         }
         console.log(objectToSend,'<-----object to send')
-        console.log(this.props.img,'<----this.props.img')
+        const {firebase, history}=this.props
+        firebase.db.collection('requests').add(objectToSend)
+        history.push('/confirmation')
+        
+        //console.log(this.props.img,'<----this.props.img')
     }
    
     render() {
@@ -104,7 +111,28 @@ class Form extends React.Component {
             }}/>
             
             <FormOne style={{display:this.state.pageOneVis}}>
-                <h1>{this.state.english?'Page One':'Pagino Uno'}</h1>
+            <h1>{this.state.english?'Page One':'Pagino Uno'}</h1>
+            <br/>
+                
+
+
+                <Map pushLatLongUp={this.props.pushLatLongUp}/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                
                 
                 
                 <input id="address" style={{display:this.state.pageOneVis}} placeholder={this.state.english?"Address":'dirección'}/>
@@ -136,10 +164,14 @@ class Form extends React.Component {
                 <h1>{this.state.english?"Page Three":'Página tres'}</h1>
                 {this.state.showCamera?<Camera pushImgUp={this.props.pushImgUp}/>:undefined}
                 <br/>
-                <button onClick={()=>{this.setState({showCamera:true})}}>Use Camera</button>
+                <button onClick={!this.state.showCamera?()=>{this.setState({showCamera:true})}:()=>{this.setState({showCamera:false})}}>{!this.state.showCamera?'Use Camera':'Hide Camera'}</button>
+                <br/>
+                <br/>
+                <div>or</div>
                 <br/>
                 <input type="file" onChange={this.fileSelectedHandler}/>
                 <button onClick={this.fileUploadHandler}>Upload</button>
+                <br/>
 
                 <textarea id = "descriptionOfSelf" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Description of self":"descripción de ti mismo"}/>
                 <br/>
@@ -208,4 +240,5 @@ class Form extends React.Component {
       );
     }
   }
-export default Form
+const Form=withRouter(withFirebase(FormBase))
+  export default Form

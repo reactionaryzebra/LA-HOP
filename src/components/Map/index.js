@@ -1,10 +1,12 @@
 import React from "react";
 import MapInfo from "./MapInfo";
 
-const Map = () => (
+class Map extends React.Component {
+  render(){
+    return(
   <div className="mapContainer">
-    <MapInfo />
-  </div>
-);
+    <MapInfo pushLatLongUp={this.props.pushLatLongUp}/>
+  </div>)
+}};
 
 export default Map;
