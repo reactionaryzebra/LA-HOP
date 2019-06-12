@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { inherits } from "util";
 
 const LandingPageBase = props => (
   <div>
@@ -43,12 +44,14 @@ const LandingPageBase = props => (
     <div>
       <button
         onClick={() => {
-          props.history.push("/report");
+          props.history.push("/form");
         }}
       >
         MAKE A REQUEST
       </button>
       <button>LEARN MORE</button>
+      
+      <button onClick={()=>{props.history.push("/status")}}>CHECK STATUS</button>
     </div>
     <input type="file" accept="image/*" capture="camera" />
   </div>

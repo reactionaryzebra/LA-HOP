@@ -23,7 +23,7 @@
   width:100%;
   background-color:grey;
   color:black;
-  border:5px solid black
+  border:2px solid black
 }
 .navBar{
   width:100%;
@@ -77,16 +77,20 @@ img{
   height:50%
 }
 .homelessNeeds{
-  background-color: blue;
+  background-color: rgb(209, 209, 212);
   width:45%;
   margin-bottom: 2%;
   display:inline-block;
-  margin-left: 1%
+  margin-left: 1%;
+  text-align: center;
+  border:2px solid black
 }
 .homelessNeedsClicked{
-  background-color: red;
+  background-color: grey;
   width:45%;
   margin-bottom: 2%;
   display:inline-block;
-  margin-left: 1%
+  margin-left: 1%;
+  text-align:center;
+  border:2px solid black
 }
