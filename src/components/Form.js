@@ -70,16 +70,16 @@ class Form extends React.Component {
       return (
         <div>
             <div className="navBar">LA-HOP</div>
-            <img  style={{display:this.state.english?'inlineBlock':'inlineBlock'}} src="http://paxriverkeeper.org/wp-content/uploads/2015/03/8.jpg" onClick={()=>{this.setState({
-                english:false,
+            <img  style={{display:this.state.english?'inlineBlock':'inlineBlock'}} src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png" onClick={()=>{this.setState({
+                english:true,
                 
             })
             console.log(this.state.english,'<--this.state.english')
             console.log(this.state.spanish,'<---this.state.spanish')}}/>
-            <img style={{display:!this.state.english?'inlineBlock':'inlineBlock'}} src="https://flagsinternational.com/wp-content/uploads/2018/02/mexico013.jpg" onClick={()=>{
+            <img style={{display:!this.state.english?'inlineBlock':'inlineBlock'}} src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg" onClick={()=>{
                 this.setState({
                     
-                    english:true
+                    english:false
                 })
                 console.log(this.state.english,'<--this.state.english')
                 console.log(this.state.spanish,'<---this.state.spanish')
@@ -99,7 +99,7 @@ class Form extends React.Component {
             </div>
             
             <div style={{display:this.state.pageTwoVis}}>
-                <h1>{this.state.english?"PageTwo":"Página dos"}</h1>
+                <h1>{this.state.english?"Page Two":"Página dos"}</h1>
                 <input id = "numberOfPeople" type="number" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Number of people":"número de personas"}/>
                 <br/>
                 <textarea id = "descriptionOfPerson" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Description of person":"descripción de la persona"}/>
@@ -125,31 +125,31 @@ class Form extends React.Component {
                         clothing:true
                     }):this.setState({
                         clothing:false
-                    })}} className={this.state.clothing?'homelessNeedsClicked':'homelessNeeds'}>clothing</div>
+                    })}} className={this.state.clothing?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'clothing':'la ropa'}</div>
                     <div onClick={()=>{!this.state.food?this.setState({
                         food:true
                     }):this.setState({
                         food:false
-                    })}}className={this.state.food?'homelessNeedsClicked':'homelessNeeds'}>food</div>
+                    })}}className={this.state.food?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'food':'comida'}</div>
                     <div onClick={()=>{!this.state.water?this.setState({
                         water:true
                     }):
                     this.setState({
                         water:false
-                    })}}className={this.state.water?'homelessNeedsClicked':'homelessNeeds'}>water</div>
+                    })}}className={this.state.water?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'water':'la agua'}</div>
                     <div onClick={()=>{!this.state.burn?this.setState({
                         burn:true
                     }):
                     this.setState({
                         burn:false
-                    })}}className={this.state.burn?'homelessNeedsClicked':'homelessNeeds'}>burn medication</div>
+                    })}}className={this.state.burn?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'burn medication':'quemar medicación'}</div>
                     <div onClick={()=>{!this.state.jacket?this.setState({
                         jacket:true
                     }):
                     this.setState({
                         jacket:false
-                    })}}className={this.state.jacket?'homelessNeedsClicked':'homelessNeeds'}>jacket</div>
-                    <input id="other" placeholder={this.state.english?"other:":"otro"}/>
+                    })}}className={this.state.jacket?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'jacket':'chaqueta'}</div>
+                    <input id="other" placeholder={this.state.english?"other:":"otro:"}/>
                     <Camera/>
                 </div>
             </div>
@@ -165,12 +165,12 @@ class Form extends React.Component {
             {pageOneVis:'none',
                 pageTwoVis:'inline',
             pageThreeVis:'none'}
-          )}}>NEXT</button>
+          )}}>{this.state.english?'NEXT':'Siguiente'}</button>
           <button className="nextButton" style={{display:this.state.pageTwoVis}} onClick={()=>{this.setState(
             {pageOneVis:'none',
                 pageTwoVis:'none',
             pageThreeVis:'inline'}
-          )}}>NEXT</button>
+          )}}>{this.state.english?'NEXT':'Siguiente'}</button>
         </div>
       );
     }
