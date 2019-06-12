@@ -14,7 +14,7 @@ class CameraBase extends React.Component {
     capture = () => {
         const {firebase} = this.props
       const imageSrc = this.webcam.getScreenshot();
-      console.log(imageSrc)
+      //console.log(imageSrc)
       //const newImage = new Blob(imageSrc)
       /*const byteCharacters = atob(imageSrc);
       const byteNumbers = new Array(byteCharacters.length);
@@ -42,7 +42,8 @@ fr.onload = function ( oFREvent ) {
 };
 fr.readAsDataURL(the_file);*/
       const idk=download(imageSrc,'homeless.gif','image/gif')
-      console.log(idk)
+      
+      this.props.pushImgUp(imageSrc)
     };
    
     render() {

@@ -21,7 +21,9 @@ class Form extends React.Component {
         water:false,
         jacket:false,
         burn:false,
-        selectedFile:null
+        shoes:false,
+        selectedFile:null,
+        showCamera:false
     }
     fileSelectedHandler=event=>{
         this.setState({selectedFile:event.target.files[0]})
@@ -57,7 +59,10 @@ class Form extends React.Component {
         if(this.state.food){
             newNecessities.push('food')
         }
-        console.log(address+date+newNecessities)
+        if(this.state.shoes){
+            newNecessities.push('shoes')
+        }
+        //console.log(address+date+newNecessities)
         const objectToSend={
             address,
             date,
@@ -69,9 +74,12 @@ class Form extends React.Component {
             descriptionOfSelf,
             reporterInfo,
             newNecessities,
-            other
+            other,
+            
+            img:this.props.img
         }
-        console.log(objectToSend)
+        console.log(objectToSend,'<-----object to send')
+        console.log(this.props.img,'<----this.props.img')
     }
    
     render() {
@@ -126,7 +134,10 @@ class Form extends React.Component {
             <FormOne style={{display:this.state.pageThreeVis}}>
             
                 <h1>{this.state.english?"Page Three":'Página tres'}</h1>
-                <Camera/>
+                {this.state.showCamera?<Camera pushImgUp={this.props.pushImgUp}/>:undefined}
+                <br/>
+                <button onClick={()=>{this.setState({showCamera:true})}}>Use Camera</button>
+                <br/>
                 <input type="file" onChange={this.fileSelectedHandler}/>
                 <button onClick={this.fileUploadHandler}>Upload</button>
 
@@ -164,6 +175,12 @@ class Form extends React.Component {
                     this.setState({
                         jacket:false
                     })}}className={this.state.jacket?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'jacket':'chaqueta'}</div>
+                    <div onClick={()=>{!this.state.shoes?this.setState({
+                        shoes:true
+                    }):
+                    this.setState({
+                        shoes:false
+                    })}}className={this.state.shoes?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'shoes':'los zapatos'}</div>
                     <input id="other" placeholder={this.state.english?"other:":"otro:"}/>
                     
                     <button className="nextButton" style={{display:this.state.pageThreeVis}} onClick={this.sendItUp}>{this.state.english?'Submit':'Enviar'}</button>
