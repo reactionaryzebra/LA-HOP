@@ -65,7 +65,6 @@ class FormBase extends React.Component {
     if (this.state.shoes) {
       newNecessities.push("shoes");
     }
-    //console.log(address+date+newNecessities)
     const objectToSend = {
       address,
       date,
@@ -81,8 +80,7 @@ class FormBase extends React.Component {
       other,
       coordinates: this.props.coordinates
     };
-    console.log(objectToSend, "<-----object to send");
-    const here = this
+    const here = this;
     const { firebase, history } = this.props;
     const imgFile = new File([img], "picture.jpg", { type: "image/jpeg" });
     firebase.storage
@@ -97,11 +95,9 @@ class FormBase extends React.Component {
           .then(function(docRef) {
             here.props.pushRequestNumberUp(docRef.id);
             console.log("Document written with ID: ", docRef.id);
-        })
+          })
       );
     history.push("/confirmation");
-
-    //console.log(this.props.img,'<----this.props.img')
   };
 
   componentDidMount() {
@@ -116,32 +112,36 @@ class FormBase extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.english?<img
-          style={{
-            display: this.state.english ? "inlineBlock" : "inlineBlock"
-          }}
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
-          onClick={() => {
-            this.setState({
-              english: true
-            });
-            console.log(this.state.english, "<--this.state.english");
-            console.log(this.state.spanish, "<---this.state.spanish");
-          }}
-        />:undefined}
-        {this.state.english?<img
-          style={{
-            display: !this.state.english ? "inlineBlock" : "inlineBlock"
-          }}
-          src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg"
-          onClick={() => {
-            this.setState({
-              english: false
-            });
-            console.log(this.state.english, "<--this.state.english");
-            console.log(this.state.spanish, "<---this.state.spanish");
-          }}
-        />:undefined}
+        {!this.state.english ? (
+          <img
+            style={{
+              display: this.state.english ? "inlineBlock" : "inlineBlock"
+            }}
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
+            onClick={() => {
+              this.setState({
+                english: true
+              });
+            }}
+          />
+        ) : (
+          undefined
+        )}
+        {this.state.english ? (
+          <img
+            style={{
+              display: !this.state.english ? "inlineBlock" : "inlineBlock"
+            }}
+            src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg"
+            onClick={() => {
+              this.setState({
+                english: false
+              });
+            }}
+          />
+        ) : (
+          undefined
+        )}
 
         <FormOne style={{ display: this.state.pageOneVis }}>
           <h1>{this.state.english ? "Page One" : "Pagino Uno"}</h1>

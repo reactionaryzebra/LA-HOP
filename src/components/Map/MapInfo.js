@@ -17,20 +17,25 @@ export class MapInfo extends Component {
     temp: null,
     locationError: null
   };
-  componentWillUnmount(){
-    this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
-    console.log(this.state,'<----this.state')
+  componentWillUnmount() {
+    this.props.pushLatLongUp([this.state.latitude, this.state.longitude]);
   }
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         location =>
-          this.setState({
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            zoom: 15
-          },this.props.pushLatLongUp([/*this.state.latitude*/location.coords.latitude,/*this.state.longitude*/location.coords.longitude])),
+          this.setState(
+            {
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+              zoom: 15
+            },
+            this.props.pushLatLongUp([
+              /*this.state.latitude*/ location.coords.latitude,
+              /*this.state.longitude*/ location.coords.longitude
+            ])
+          ),
         error => this.setState({ locationError: error }),
         { timeout: 5000 }
       );
@@ -43,8 +48,6 @@ export class MapInfo extends Component {
 
   render() {
     const { latitude, longitude, zoom } = this.state;
-    console.log(this.state,'<----this.state in render');
-    //this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
     return (
       <div>
         <button onClick={this.getGeoLocation}>Location</button>
