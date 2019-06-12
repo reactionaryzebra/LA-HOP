@@ -9,10 +9,12 @@ import Form from "./components/Form";
 
 import FollowupForm from "./components/FollowupForm";
 import LandingPage from "./components/LandingPage";
+import NavBar from "./components/NavBar";
 
 function AppBase() {
   return (
     <Router>
+      <NavBar />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route exact path={ROUTES.REPORT} component={Map} />
       <Route exact path={ROUTES.CONFIRMATION} component={FollowupForm} />
