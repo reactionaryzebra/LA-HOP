@@ -1,99 +1,104 @@
 import React from "react";
-import Camera from './Camera'
-import Map from './Map'
-import styled from 'styled-components'
-import FormOne from '../styles/FormOne'
-import {withFirebase} from '../components/Firebase'
-import {withRouter} from 'react-router-dom'
-const necessities=['food','water','jacket','burn','clothing']
+import Camera from "./Camera";
+import Map from "./Map";
+import uniqid from "uniqid";
+import styled from "styled-components";
+import FormOne from "../styles/FormOne";
+import { withFirebase } from "../components/Firebase";
+import { withRouter } from "react-router-dom";
+const necessities = ["food", "water", "jacket", "burn", "clothing"];
 
-
-
-
- 
 class FormBase extends React.Component {
-    state = {
-        english:true,
-        spanish:false,
-        pageOneVis:'inline',
-        pageTwoVis:'none',
-        pageThreeVis:'none',
-        clothing:false,
-        food:false,
-        water:false,
-        jacket:false,
-        burn:false,
-        shoes:false,
-        selectedFile:null,
-        showCamera:false
-    }
-    fileSelectedHandler=event=>{
-        this.setState({selectedFile:event.target.files[0]})
-    }
+  state = {
+    english: true,
+    spanish: false,
+    pageOneVis: "inline",
+    pageTwoVis: "none",
+    pageThreeVis: "none",
+    clothing: false,
+    food: false,
+    water: false,
+    jacket: false,
+    burn: false,
+    shoes: false,
+    selectedFile: null,
+    showCamera: false
+  };
+  fileSelectedHandler = event => {
+    this.setState({ selectedFile: event.target.files[0] });
+  };
 
-    fileUploadHandler=()=>{
-        console.log('Now upload it to whereever')
+  fileUploadHandler = () => {
+    console.log("Now upload it to whereever");
+  };
+  sendItUp = () => {
+    const address = document.getElementById("address").value;
+    const date = document.getElementById("date").value;
+    const location = document.getElementById("location").value;
+    const numberOfPeople = document.getElementById("numberOfPeople").value;
+    const descriptionOfPerson = document.getElementById("descriptionOfPerson")
+      .value;
+    const descriptionOfNeeds = document.getElementById("descriptionOfNeeds")
+      .value;
+    const contactInfo = document.getElementById("contactInfo").value;
+    const descriptionOfSelf = document.getElementById("descriptionOfSelf")
+      .value;
+    const reporterInfo = document.getElementById("reporterInfo").value;
+    const other = document.getElementById("other").value;
+    const img = document.getElementById("image").value;
+    let newNecessities = [];
+    if (this.state.burn) {
+      newNecessities.push("burn");
     }
-    sendItUp=()=>{
-        const address=document.getElementById("address").value
-        const date=document.getElementById("date").value
-        const location=document.getElementById("location").value
-        const numberOfPeople=document.getElementById("numberOfPeople").value
-        const descriptionOfPerson=document.getElementById("descriptionOfPerson").value
-        const descriptionOfNeeds=document.getElementById("descriptionOfNeeds").value
-        const contactInfo=document.getElementById("contactInfo").value
-        const descriptionOfSelf=document.getElementById("descriptionOfSelf").value
-        const reporterInfo=document.getElementById("reporterInfo").value
-        const other=document.getElementById("other").value
-        let newNecessities=[]
-        if(this.state.burn){
-            newNecessities.push('burn')
-        }
-        if(this.state.water){
-            newNecessities.push('water')
-        }
-        if(this.state.jacket){
-            newNecessities.push('jacket')
-        }
-        if(this.state.clothing){
-            newNecessities.push('clothing')
-        }
-        if(this.state.food){
-            newNecessities.push('food')
-        }
-        if(this.state.shoes){
-            newNecessities.push('shoes')
-        }
-        //console.log(address+date+newNecessities)
-        const objectToSend={
-            address,
-            date,
-            location,
-            numberOfPeople,
-            descriptionOfPerson,
-            descriptionOfNeeds,
-            contactInfo,
-            descriptionOfSelf,
-            reporterInfo,
-            newNecessities,
-            other,
-            status:'contacted and helped! :)',
-            
-            img:this.props.img,
-            coordinates:this.props.coordinates
-        }
-        console.log(objectToSend,'<-----object to send')
-        const {firebase, history}=this.props
-        const here = this
-        let idk=firebase.db.collection('requests').add(objectToSend).then(function(docRef) {
-            here.props.pushRequestNumberUp(docRef.id);
-            console.log("Document written with ID: ", docRef.id);
-        })
-        console.log(idk)
-        history.push('/confirmation')
-        
-        //console.log(this.props.img,'<----this.props.img')
+    if (this.state.water) {
+      newNecessities.push("water");
     }
+    if (this.state.jacket) {
+      newNecessities.push("jacket");
+    }
+    if (this.state.clothing) {
+      newNecessities.push("clothing");
+    }
+    if (this.state.food) {
+      newNecessities.push("food");
+    }
+    if (this.state.shoes) {
+      newNecessities.push("shoes");
+    }
+    //console.log(address+date+newNecessities)
+    const objectToSend = {
+      address,
+      date,
+      location,
+      numberOfPeople,
+      descriptionOfPerson,
+      descriptionOfNeeds,
+      contactInfo,
+      descriptionOfSelf,
+      reporterInfo,
+      newNecessities,
+      status:'contacted and helped! :)',
+      other,
+      coordinates: this.props.coordinates
+    };
+    console.log(objectToSend, "<-----object to send");
+    const { firebase, history } = this.props;
+    const imgFile = new File([img], "picture.jpg", { type: "image/jpeg" });
+    firebase.storage
+      .ref()
+      .child(uniqid())
+      .put(imgFile)
+      .then(snapshot =>
+        snapshot.ref
+          .getDownloadURL()
+          .then(string => (objectToSend.imageURL = string))
+          .then(() => firebase.db.collection("requests").add(objectToSend))
+      );
+    history.push("/confirmation");
+
+    //console.log(this.props.img,'<----this.props.img')
+  };
+
     componentDidMount(){
         Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
@@ -102,78 +107,126 @@ class FormBase extends React.Component {
         });
         document.getElementById('date').value = new Date().toDateInputValue();
     }
-   
-    render() {
 
-   
-      return (
-        <div>
-            
-            {!this.state.english?<img  style={{display:this.state.english?'inlineBlock':'inlineBlock'}} src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png" onClick={()=>{this.setState({
-                english:true,
-                
-            })
-            console.log(this.state.english,'<--this.state.english')
-            console.log(this.state.spanish,'<---this.state.spanish')}}/>:undefined}
-            {this.state.english?<img style={{display:!this.state.english?'inlineBlock':'inlineBlock'}} src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg" onClick={()=>{
-                this.setState({
-                    
-                    english:false
-                })
-                console.log(this.state.english,'<--this.state.english')
-                console.log(this.state.spanish,'<---this.state.spanish')
-            }}/>:undefined}
-            
-            <FormOne className='formOne' style={{display:this.state.pageOneVis}}>
-            <h1>{this.state.english?'Page One':'Pagino Uno'}</h1>
-            <br/>
-                
+  render() {
+    return (
+      <div>
+        <img
+          style={{
+            display: this.state.english ? "inlineBlock" : "inlineBlock"
+          }}
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
+          onClick={() => {
+            this.setState({
+              english: true
+            });
+            console.log(this.state.english, "<--this.state.english");
+            console.log(this.state.spanish, "<---this.state.spanish");
+          }}
+        />
+        <img
+          style={{
+            display: !this.state.english ? "inlineBlock" : "inlineBlock"
+          }}
+          src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg"
+          onClick={() => {
+            this.setState({
+              english: false
+            });
+            console.log(this.state.english, "<--this.state.english");
+            console.log(this.state.spanish, "<---this.state.spanish");
+          }}
+        />
 
+        <FormOne style={{ display: this.state.pageOneVis }}>
+          <h1>{this.state.english ? "Page One" : "Pagino Uno"}</h1>
+          <br />
+          <Map pushLatLongUp={this.props.pushLatLongUp} />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
 
-                <Map pushLatLongUp={this.props.pushLatLongUp}/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+          <input
+            id="address"
+            style={{ display: this.state.pageOneVis }}
+            placeholder={this.state.english ? "Address" : "dirección"}
+          />
+          <br />
+          <input
+            type="date"
+            id="date"
+            style={{ display: this.state.pageOneVis }}
+            placeholder="Date"
+          />
+          <br />
 
-                
-                
-                
-                <input id="address" style={{display:this.state.pageOneVis}} placeholder={this.state.english?"Address":'dirección'}/>
-                <br/>
-                <input type="date" id="date" style={{display:this.state.pageOneVis}} placeholder="Date"/>
-                <br/>
-                
-                <textarea  id="location" style={{display:this.state.pageOneVis}} placeholder={this.state.english?"Location Description":"descripción de la ubicación"}/>
-                
-            </FormOne>
-            
-            <FormOne className='formOne' style={{display:this.state.pageTwoVis}}>
-                <h1>{this.state.english?"Page Two":"Página dos"}</h1>
-                <input id = "numberOfPeople" type="number" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Number of people":"número de personas"}/>
-                <br/>
-                <textarea id = "descriptionOfPerson" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Description of person":"descripción de la persona"}/>
-                <br/>
-                <textarea id = "descriptionOfNeeds" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Description of needs":"descripción de las necesidades"}/>
-                <br/>
-                <textarea id = "contactInfo" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Contact Info (if possible)":"Información del contacto"}/>
-                <br/>
-                
-            </FormOne>
-            
-            
-            
-            <FormOne className='formOne' style={{display:this.state.pageThreeVis}}>
+          <textarea
+            type="date"
+            id="location"
+            style={{ display: this.state.pageOneVis }}
+            placeholder={
+              this.state.english
+                ? "Location Description"
+                : "descripción de la ubicación"
+            }
+          />
+        </FormOne>
+
+        <FormOne style={{ display: this.state.pageTwoVis }}>
+          <h1>{this.state.english ? "Page Two" : "Página dos"}</h1>
+          <input
+            id="numberOfPeople"
+            type="number"
+            style={{ display: this.state.pageTwoVis }}
+            placeholder={
+              this.state.english ? "Number of people" : "número de personas"
+            }
+          />
+          <br />
+          <textarea
+            id="descriptionOfPerson"
+            style={{ display: this.state.pageTwoVis }}
+            placeholder={
+              this.state.english
+                ? "Description of person"
+                : "descripción de la persona"
+            }
+          />
+          <br />
+          <textarea
+            id="descriptionOfNeeds"
+            style={{ display: this.state.pageTwoVis }}
+            placeholder={
+              this.state.english
+                ? "Description of needs"
+                : "descripción de las necesidades"
+            }
+          />
+          <br />
+          <textarea
+            id="contactInfo"
+            style={{ display: this.state.pageTwoVis }}
+            placeholder={
+              this.state.english
+                ? "Contact Info (if possible)"
+                : "Información del contacto"
+            }
+          />
+          <br />
+        </FormOne>
+
+        <FormOne style={{display:this.state.pageThreeVis}}>
             
                 <h1>{this.state.english?"Page Three":'Página tres'}</h1>
                 {this.state.showCamera?<Camera pushImgUp={this.props.pushImgUp}/>:undefined}
@@ -234,26 +287,49 @@ class FormBase extends React.Component {
                 </div>
             </FormOne>
             <br/>
-            
+        <br />
 
-          <button style={{display:'none'}} onClick={()=>{this.setState(
-            {pageOneVis:'inline',
-                pageTwoVis:'none',
-            pageThreeVis:'none'}
-          )}}>One</button>
-          <button className="nextButton" style={{display:this.state.pageOneVis,zIndex:'300'}} onClick={()=>{this.setState(
-            {pageOneVis:'none',
-                pageTwoVis:'inline',
-            pageThreeVis:'none'}
-          )}}>{this.state.english?'NEXT':'Siguiente'}</button>
-          <button className="nextButton" style={{display:this.state.pageTwoVis,zIndex:'200'}} onClick={()=>{this.setState(
-            {pageOneVis:'none',
-                pageTwoVis:'none',
-            pageThreeVis:'inline'}
-          )}}>{this.state.english?'NEXT':'Siguiente'}</button>
-        </div>
-      );
-    }
+        <button
+          style={{ display: "none" }}
+          onClick={() => {
+            this.setState({
+              pageOneVis: "inline",
+              pageTwoVis: "none",
+              pageThreeVis: "none"
+            });
+          }}
+        >
+          One
+        </button>
+        <button
+          className="nextButton"
+          style={{ display: this.state.pageOneVis }}
+          onClick={() => {
+            this.setState({
+              pageOneVis: "none",
+              pageTwoVis: "inline",
+              pageThreeVis: "none"
+            });
+          }}
+        >
+          {this.state.english ? "NEXT" : "Siguiente"}
+        </button>
+        <button
+          className="nextButton"
+          style={{ display: this.state.pageTwoVis }}
+          onClick={() => {
+            this.setState({
+              pageOneVis: "none",
+              pageTwoVis: "none",
+              pageThreeVis: "inline"
+            });
+          }}
+        >
+          {this.state.english ? "NEXT" : "Siguiente"}
+        </button>
+      </div>
+    );
   }
-const Form=withRouter(withFirebase(FormBase))
-  export default Form
+}
+const Form = withRouter(withFirebase(FormBase));
+export default Form;
