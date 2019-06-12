@@ -12,12 +12,32 @@ export class MapInfo extends Component {
     formattedAddress: null,
     latitude: null,
     longitude: null,
-    zoom: 10
+    zoom: 10,
+    temp: null,
+    locationError: null
   };
+
+  getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        this.setState({
+          latitude: position.coordinates.latitude,
+          longitude: position.coordinates.longitude
+        });
+      });
+    } else {
+      this.setState({
+        locationError: "Your browser does not support location services"
+      });
+    }
+  };
+
   render() {
     const { latitude, longitude, zoom } = this.state;
+    console.log(this.state.temp);
     return (
       <div>
+        <button onClick={this.getGeoLocation}>Location</button>
         <Autocomplete
           style={{ width: "90%" }}
           onPlaceSelected={place =>
