@@ -1,15 +1,33 @@
 import React from "react";
 import Webcam from "react-webcam";
-import download from "downloadjs"  
+import download from "downloadjs" ;
+import {withFirebase} from '../components/Firebase'
+// import firebase from './Firebase' 
+// import '@firebase/firestore'
  
-class Camera extends React.Component {
+class CameraBase extends React.Component {
     setRef = webcam => {
       this.webcam = webcam;
     };
+
    
     capture = () => {
+        const {firebase} = this.props
       const imageSrc = this.webcam.getScreenshot();
       console.log(imageSrc)
+      //const newImage = new Blob(imageSrc)
+      const byteCharacters = atob(imageSrc);
+      const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: 'image/gif'});
+        var docRef = firebase.storage.ref().child('homeless.gif');
+        var file = blob // use the Blob or File API
+docRef.put(file).then(function(snapshot) {
+  console.log('Uploaded a blob or file!');
+});
       download(imageSrc,'homeless.gif','image/gif')
     };
    
@@ -35,4 +53,6 @@ class Camera extends React.Component {
       );
     }
   }
+
+const Camera = withFirebase(CameraBase)
 export default Camera
