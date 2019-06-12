@@ -35,6 +35,7 @@ class AppBase extends React.Component {
       />
       <Route exact path={ROUTES.CAMERA} render={() => <Camera />} />
       <Route exact path={ROUTES.FORM} render={() => <Form img={this.state.img} pushImgUp={this.pushImgUp}/>} />
+
     </Router>
   );
 }}
