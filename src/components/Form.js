@@ -77,13 +77,19 @@ class FormBase extends React.Component {
             reporterInfo,
             newNecessities,
             other,
+            status:'contacted and helped! :)',
             
             img:this.props.img,
             coordinates:this.props.coordinates
         }
         console.log(objectToSend,'<-----object to send')
         const {firebase, history}=this.props
-        firebase.db.collection('requests').add(objectToSend)
+        const here = this
+        let idk=firebase.db.collection('requests').add(objectToSend).then(function(docRef) {
+            here.props.pushRequestNumberUp(docRef.id);
+            console.log("Document written with ID: ", docRef.id);
+        })
+        console.log(idk)
         history.push('/confirmation')
         
         //console.log(this.props.img,'<----this.props.img')
@@ -215,7 +221,7 @@ class FormBase extends React.Component {
                     })}}className={this.state.shoes?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'shoes':'los zapatos'}</div>
                     <input id="other" placeholder={this.state.english?"other:":"otro:"}/>
                     
-                    <button className="nextButton" style={{display:this.state.pageThreeVis}} onClick={this.sendItUp}>{this.state.english?'Submit':'Enviar'}</button>
+                    <button className="nextButton" style={{display:this.state.pageThreeVis,zIndex:'3000'}} onClick={this.sendItUp}>{this.state.english?'Submit':'Enviar'}</button>
                 </div>
             </FormOne>
             <br/>
@@ -226,12 +232,12 @@ class FormBase extends React.Component {
                 pageTwoVis:'none',
             pageThreeVis:'none'}
           )}}>One</button>
-          <button className="nextButton" style={{display:this.state.pageOneVis}} onClick={()=>{this.setState(
+          <button className="nextButton" style={{display:this.state.pageOneVis,zIndex:'300'}} onClick={()=>{this.setState(
             {pageOneVis:'none',
                 pageTwoVis:'inline',
             pageThreeVis:'none'}
           )}}>{this.state.english?'NEXT':'Siguiente'}</button>
-          <button className="nextButton" style={{display:this.state.pageTwoVis}} onClick={()=>{this.setState(
+          <button className="nextButton" style={{display:this.state.pageTwoVis,zIndex:'200'}} onClick={()=>{this.setState(
             {pageOneVis:'none',
                 pageTwoVis:'none',
             pageThreeVis:'inline'}

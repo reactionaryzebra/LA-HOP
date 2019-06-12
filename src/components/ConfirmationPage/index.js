@@ -10,8 +10,12 @@ class ConfirmationPage extends Component {
   setSubmitted = bool => {
     this.setState({ submitted: bool });
   };
+  componentDidMount=()=>{
+    console.log(this.props,'<----this.props confoirmation page')
+  }
 
   render() {
+    console.log(this.props,'<----this.props confoirmation page!!!!!!!!!!!!!!!!!')
     return (
       <Confirmation>
         <div>
@@ -25,6 +29,7 @@ class ConfirmationPage extends Component {
             please provide us with some contact information. You will receive a
             notification shortly.
           </p>
+          <h4>Or you can type this code into the portal on the main page {this.props.requestNumber}</h4>
         </div>
         <FollowupForm setSubmitted={this.setSubmitted} />
         {this.state.submitted && <p>We'll be in touch!</p>}

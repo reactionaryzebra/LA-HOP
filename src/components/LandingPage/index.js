@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { inherits } from "util";
 
 const LandingPageBase = props => (
   <div>
@@ -49,6 +50,8 @@ const LandingPageBase = props => (
         MAKE A REQUEST
       </button>
       <button>LEARN MORE</button>
+      
+      <button onClick={()=>{props.history.push("/status")}}>Check status</button>
     </div>
   </div>
 );
