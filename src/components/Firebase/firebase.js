@@ -1,5 +1,6 @@
 import app from "firebase/app";
 import "firebase/firestore";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAZw-alD1oDFDYyEir6z5MaveIRetOa24",
@@ -15,7 +16,7 @@ class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     this.db = app.firestore();
-    //this.storage=app.storage()
+    this.storage = app.storage();
   }
 }
 
