@@ -19,6 +19,28 @@
   color: white;
 }
 
+.nextButton{
+  width:100%;
+  background-color:grey;
+  color:black;
+  border:5px solid black
+}
+.navBar{
+  width:100%;
+  height:15%;
+  align-content: center;
+  display: inline-block;
+  background-color:grey;
+  color:black;
+  border:5px solid black
+
+}
+img{
+  height:10%;
+  width:10%;
+  float:right
+}
+
 .App-link {
   color: #61dafb;
 }
