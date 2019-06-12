@@ -136,7 +136,7 @@ class Form extends React.Component {
                 <h1>{this.state.english?"Page Three":'Página tres'}</h1>
                 {this.state.showCamera?<Camera pushImgUp={this.props.pushImgUp}/>:undefined}
                 <br/>
-                <button onClick={()=>{this.setState({showCamera:true})}}>Use Camera</button>
+                <button onClick={!this.state.showCamera?()=>{this.setState({showCamera:true})}:()=>{this.setState({showCamera:false})}}>{!this.state.showCamera?'Use Camera':'Hide Camera'}</button>
                 <br/>
                 <input type="file" onChange={this.fileSelectedHandler}/>
                 <button onClick={this.fileUploadHandler}>Upload</button>
