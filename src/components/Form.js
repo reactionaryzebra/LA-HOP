@@ -94,6 +94,14 @@ class FormBase extends React.Component {
         
         //console.log(this.props.img,'<----this.props.img')
     }
+    componentDidMount(){
+        Date.prototype.toDateInputValue = (function() {
+            var local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0,10);
+        });
+        document.getElementById('date').value = new Date().toDateInputValue();
+    }
    
     render() {
 
@@ -146,7 +154,7 @@ class FormBase extends React.Component {
                 <input type="date" id="date" style={{display:this.state.pageOneVis}} placeholder="Date"/>
                 <br/>
                 
-                <textarea type="date" id="location" style={{display:this.state.pageOneVis}} placeholder={this.state.english?"Location Description":"descripción de la ubicación"}/>
+                <textarea  id="location" style={{display:this.state.pageOneVis}} placeholder={this.state.english?"Location Description":"descripción de la ubicación"}/>
                 
             </FormOne>
             
