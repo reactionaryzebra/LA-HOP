@@ -50,6 +50,7 @@ const LandingPageBase = props => (
       </button>
       <button>LEARN MORE</button>
     </div>
+    <input type="file" accept="image/*" capture="camera" />
   </div>
 );
 
