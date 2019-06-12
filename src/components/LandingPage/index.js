@@ -44,14 +44,14 @@ const LandingPageBase = props => (
     <div>
       <button
         onClick={() => {
-          props.history.push("/report");
+          props.history.push("/form");
         }}
       >
         MAKE A REQUEST
       </button>
       <button>LEARN MORE</button>
       
-      <button onClick={()=>{props.history.push("/status")}}>Check status</button>
+      <button onClick={()=>{props.history.push("/status")}}>CHECK STATUS</button>
     </div>
   </div>
 );

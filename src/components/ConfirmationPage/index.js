@@ -29,7 +29,7 @@ class ConfirmationPage extends Component {
             please provide us with some contact information. You will receive a
             notification shortly.
           </p>
-          <h4>Or you can type this code into the portal on the main page {this.props.requestNumber}</h4>
+          <h4>Or you can type this code into the portal linked from the main page: {this.props.requestNumber}</h4>
         </div>
         <FollowupForm setSubmitted={this.setSubmitted} />
         {this.state.submitted && <p>We'll be in touch!</p>}
@@ -37,8 +37,11 @@ class ConfirmationPage extends Component {
           <h2>ADDITIONAL RESOURCES</h2>
           <div>
             <div />
+            <a target="_blank" href="https://losangelesmission.org"><h4>Los Angeles Mission</h4></a>
             <div />
+            <a target="_blank" href="https://www.downtownwomenscenter.org/"><h4>Downtown Women's Center</h4></a>
             <div />
+            <a target="_blank" href="https://www.volunteermatch.org/search?l=Los%20Angeles%2C%20CA%2090001&k=Homeless"><h4>Volunteer Match</h4></a>
           </div>
         </div>
       </Confirmation>

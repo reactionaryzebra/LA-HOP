@@ -101,20 +101,20 @@ class FormBase extends React.Component {
       return (
         <div>
             
-            <img  style={{display:this.state.english?'inlineBlock':'inlineBlock'}} src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png" onClick={()=>{this.setState({
+            {!this.state.english?<img  style={{display:this.state.english?'inlineBlock':'inlineBlock'}} src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png" onClick={()=>{this.setState({
                 english:true,
                 
             })
             console.log(this.state.english,'<--this.state.english')
-            console.log(this.state.spanish,'<---this.state.spanish')}}/>
-            <img style={{display:!this.state.english?'inlineBlock':'inlineBlock'}} src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg" onClick={()=>{
+            console.log(this.state.spanish,'<---this.state.spanish')}}/>:undefined}
+            {this.state.english?<img style={{display:!this.state.english?'inlineBlock':'inlineBlock'}} src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg" onClick={()=>{
                 this.setState({
                     
                     english:false
                 })
                 console.log(this.state.english,'<--this.state.english')
                 console.log(this.state.spanish,'<---this.state.spanish')
-            }}/>
+            }}/>:undefined}
             
             <FormOne style={{display:this.state.pageOneVis}}>
             <h1>{this.state.english?'Page One':'Pagino Uno'}</h1>
@@ -183,6 +183,7 @@ class FormBase extends React.Component {
                 <br/>
                 <input id = "reporterInfo" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Reporter contact info":"informacion de contacto del reportero"}/>
                 <br/>
+                <h5>What the reportee needs:</h5>
                 
                 <div className="needList">
                     <div onClick={()=>{!this.state.clothing?this.setState({
