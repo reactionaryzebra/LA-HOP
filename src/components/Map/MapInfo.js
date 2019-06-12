@@ -19,12 +19,16 @@ export class MapInfo extends Component {
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        this.setState({
-          latitude: position.coordinates.latitude,
-          longitude: position.coordinates.longitude
-        });
-      });
+      navigator.geolocation.getCurrentPosition(
+        location =>
+          this.setState({
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            zoom: 15
+          }),
+        error => this.setState({ locationError: error }),
+        { timeout: 5000 }
+      );
     } else {
       this.setState({
         locationError: "Your browser does not support location services"
