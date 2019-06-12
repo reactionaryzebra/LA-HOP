@@ -2,7 +2,9 @@ import React from "react";
 import Camera from './Camera'
 import Map from './Map'
 import styled from 'styled-components'
+import FormOne from '../styles/FormOne'
 const necessities=['food','water','jacket','burn','clothing']
+
 
 
 
@@ -18,7 +20,15 @@ class Form extends React.Component {
         food:false,
         water:false,
         jacket:false,
-        burn:false
+        burn:false,
+        selectedFile:null
+    }
+    fileSelectedHandler=event=>{
+        this.setState({selectedFile:event.target.files[0]})
+    }
+
+    fileUploadHandler=()=>{
+        console.log('Now upload it to whereever')
     }
     sendItUp=()=>{
         const address=document.getElementById("address").value
@@ -69,7 +79,7 @@ class Form extends React.Component {
    
       return (
         <div>
-            <div className="navBar">LA-HOP</div>
+            
             <img  style={{display:this.state.english?'inlineBlock':'inlineBlock'}} src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png" onClick={()=>{this.setState({
                 english:true,
                 
@@ -85,7 +95,7 @@ class Form extends React.Component {
                 console.log(this.state.spanish,'<---this.state.spanish')
             }}/>
             
-            <div style={{display:this.state.pageOneVis}}>
+            <FormOne style={{display:this.state.pageOneVis}}>
                 <h1>{this.state.english?'Page One':'Pagino Uno'}</h1>
                 
                 
@@ -96,9 +106,9 @@ class Form extends React.Component {
                 
                 <textarea type="date" id="location" style={{display:this.state.pageOneVis}} placeholder={this.state.english?"Location Description":"descripción de la ubicación"}/>
                 
-            </div>
+            </FormOne>
             
-            <div style={{display:this.state.pageTwoVis}}>
+            <FormOne style={{display:this.state.pageTwoVis}}>
                 <h1>{this.state.english?"Page Two":"Página dos"}</h1>
                 <input id = "numberOfPeople" type="number" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Number of people":"número de personas"}/>
                 <br/>
@@ -109,17 +119,22 @@ class Form extends React.Component {
                 <textarea id = "contactInfo" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Contact Info (if possible)":"Información del contacto"}/>
                 <br/>
                 
-            </div>
+            </FormOne>
             
             
             
-            <div style={{display:this.state.pageThreeVis}}>
+            <FormOne style={{display:this.state.pageThreeVis}}>
+            
                 <h1>{this.state.english?"Page Three":'Página tres'}</h1>
-                <input id = "descriptionOfSelf" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Description of self":"descripción de ti mismo"}/>
+                <Camera/>
+                <input type="file" onChange={this.fileSelectedHandler}/>
+                <button onClick={this.fileUploadHandler}>Upload</button>
+
+                <textarea id = "descriptionOfSelf" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Description of self":"descripción de ti mismo"}/>
                 <br/>
                 <input id = "reporterInfo" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Reporter contact info":"informacion de contacto del reportero"}/>
                 <br/>
-                <button style={{display:this.state.pageThreeVis}} onClick={this.sendItUp}>Submit</button>
+                
                 <div className="needList">
                     <div onClick={()=>{!this.state.clothing?this.setState({
                         clothing:true
@@ -150,9 +165,10 @@ class Form extends React.Component {
                         jacket:false
                     })}}className={this.state.jacket?'homelessNeedsClicked':'homelessNeeds'}>{this.state.english?'jacket':'chaqueta'}</div>
                     <input id="other" placeholder={this.state.english?"other:":"otro:"}/>
-                    <Camera/>
+                    
+                    <button className="nextButton" style={{display:this.state.pageThreeVis}} onClick={this.sendItUp}>{this.state.english?'Submit':'Enviar'}</button>
                 </div>
-            </div>
+            </FormOne>
             <br/>
             
 

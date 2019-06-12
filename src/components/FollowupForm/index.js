@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+import FollowUp from "../../styles/FollowUp";
+import Input from "../../styles/Input";
+import FormSubmit from "../../styles/FormSubmit";
 
 class FollowupFormBase extends Component {
   state = {
@@ -26,38 +29,39 @@ class FollowupFormBase extends Component {
     const { fullName, email, phone, description } = this.state;
     const isInvalid = fullName === "" || email === "" || phone === "";
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
+      <FollowUp onSubmit={this.handleSubmit}>
+        <Input
           type="text"
           name="fullName"
           value={fullName}
           onChange={this.handleChange}
           placeholder="Name"
         />
-        <input
+        <Input
           type="email"
           name="email"
           value={email}
           onChange={this.handleChange}
           placeholder="email"
         />
-        <input
+        <Input
           type="tel"
           name="phone"
           value={phone}
           onChange={this.handleChange}
+          placeholder="Phone #"
         />
-        <input
+        <Input
           type="text"
           name="description"
           value={description}
           onChange={this.handleChange}
           placeholder="Tell us more"
         />
-        <button disabled={isInvalid} type="submit">
+        <FormSubmit disabled={isInvalid} type="submit">
           Submit
-        </button>
-      </form>
+        </FormSubmit>
+      </FollowUp>
     );
   }
 }
