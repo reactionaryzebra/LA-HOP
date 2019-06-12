@@ -124,7 +124,7 @@ class FormBase extends React.Component {
                 console.log(this.state.spanish,'<---this.state.spanish')
             }}/>:undefined}
             
-            <FormOne style={{display:this.state.pageOneVis}}>
+            <FormOne className='formOne' style={{display:this.state.pageOneVis}}>
             <h1>{this.state.english?'Page One':'Pagino Uno'}</h1>
             <br/>
                 
@@ -158,7 +158,7 @@ class FormBase extends React.Component {
                 
             </FormOne>
             
-            <FormOne style={{display:this.state.pageTwoVis}}>
+            <FormOne className='formOne' style={{display:this.state.pageTwoVis}}>
                 <h1>{this.state.english?"Page Two":"Página dos"}</h1>
                 <input id = "numberOfPeople" type="number" style={{display:this.state.pageTwoVis}} placeholder={this.state.english?"Number of people":"número de personas"}/>
                 <br/>
@@ -173,7 +173,7 @@ class FormBase extends React.Component {
             
             
             
-            <FormOne style={{display:this.state.pageThreeVis}}>
+            <FormOne className='formOne' style={{display:this.state.pageThreeVis}}>
             
                 <h1>{this.state.english?"Page Three":'Página tres'}</h1>
                 {this.state.showCamera?<Camera pushImgUp={this.props.pushImgUp}/>:undefined}
@@ -191,7 +191,7 @@ class FormBase extends React.Component {
                 <br/>
                 <input id = "reporterInfo" style={{display:this.state.pageThreeVis}} placeholder={this.state.english?"Reporter contact info":"informacion de contacto del reportero"}/>
                 <br/>
-                <h5>What the reportee needs:</h5>
+                <h5>{this.state.english?'What the reportee needs:':'lo que el reporte necesita'}</h5>
                 
                 <div className="needList">
                     <div onClick={()=>{!this.state.clothing?this.setState({
