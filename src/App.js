@@ -13,13 +13,21 @@ import NavBar from "./components/NavBar";
 
 class AppBase extends React.Component {
   state={
-    img:null
+    img:null,
+    coordinates:null
   }
   pushImgUp=(image)=>{
     this.setState({
       img:image
     })
     console.log(image)
+  }
+
+  pushLatLongUp=(coordinates)=>{
+    this.setState({
+      coordinates
+    })
+
   }
   render(){
   return (
@@ -34,7 +42,8 @@ class AppBase extends React.Component {
         render={() => <div>Route Tracker</div>}
       />
       <Route exact path={ROUTES.CAMERA} render={() => <Camera />} />
-      <Route exact path={ROUTES.FORM} render={() => <Form img={this.state.img} pushImgUp={this.pushImgUp}/>} />
+      <Route exact path={ROUTES.FORM} render={() => <Form coordinates={this.state.coordinates} pushLatLongUp={this.pushLatLongUp} img={this.state.img} pushImgUp={this.pushImgUp}/>} />
+
     </Router>
   );
 }}

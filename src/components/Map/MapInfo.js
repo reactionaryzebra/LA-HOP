@@ -16,6 +16,10 @@ export class MapInfo extends Component {
     temp: null,
     locationError: null
   };
+  componentWillUnmount(){
+    this.props.pushLatLongUp([this.state.latitude,this.state.longitude])
+    console.log(this.state.latitude,'<----this.state.latitude')
+  }
 
   getGeoLocation = () => {
     if (navigator.geolocation) {

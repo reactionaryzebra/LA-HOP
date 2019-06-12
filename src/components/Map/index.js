@@ -13,7 +13,7 @@ class Map extends Component {
   render() {
     return (
       <div className="mapContainer">
-        <MapInfo />
+        <MapInfo pushLatLongUp={this.props.pushLatLongUp}/>
       </div>
     );
   }
