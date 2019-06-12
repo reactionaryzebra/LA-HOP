@@ -76,6 +76,12 @@ img{
   padding-left: 2em;
   height:50%
 }
+.formOne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
 .homelessNeeds{
   background-color: rgb(209, 209, 212);
   width:45%;
