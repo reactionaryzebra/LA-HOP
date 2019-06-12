@@ -7,7 +7,7 @@ import * as ROUTES from "./constants/routes";
 import Camera from "./components/Camera";
 import Form from "./components/Form";
 
-import FollowupForm from "./components/FollowupForm";
+import ConfirmationPage from "./components/ConfirmationPage";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
 
@@ -17,7 +17,7 @@ function AppBase() {
       <NavBar />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route exact path={ROUTES.REPORT} component={Map} />
-      <Route exact path={ROUTES.CONFIRMATION} component={FollowupForm} />
+      <Route exact path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
       <Route
         exact
         path={ROUTES.REPORT_TRACKER}

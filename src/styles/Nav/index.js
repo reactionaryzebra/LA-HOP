@@ -3,9 +3,9 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-  width: 100vw;
-  height: 8vh;
-  padding-top: 1rem;
+  width: 96vw;
+  height: 6vh;
+  padding: 2vw;
   background-color: gray;
 `;
 
