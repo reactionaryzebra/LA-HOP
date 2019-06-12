@@ -17,9 +17,11 @@ class FollowupFormBase extends Component {
   };
 
   handleSubmit = async e => {
+    const { setSubmitted } = this.props;
     e.preventDefault();
     try {
       console.log("success");
+      setSubmitted(true);
     } catch (error) {
       console.log("error");
     }
