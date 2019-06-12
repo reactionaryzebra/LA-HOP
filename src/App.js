@@ -11,7 +11,17 @@ import ConfirmationPage from "./components/ConfirmationPage";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
 
-function AppBase() {
+class AppBase extends React.Component {
+  state={
+    img:null
+  }
+  pushImgUp=(image)=>{
+    this.setState({
+      img:image
+    })
+    console.log(image)
+  }
+  render(){
   return (
     <Router>
       <NavBar />
@@ -24,10 +34,11 @@ function AppBase() {
         render={() => <div>Route Tracker</div>}
       />
       <Route exact path={ROUTES.CAMERA} render={() => <Camera />} />
-      <Route exact path={ROUTES.FORM} render={() => <Form />} />
+      <Route exact path={ROUTES.FORM} render={() => <Form img={this.state.img} pushImgUp={this.pushImgUp}/>} />
+
     </Router>
   );
-}
+}}
 
 const App = withFirebase(AppBase);
 

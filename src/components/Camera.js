@@ -14,9 +14,9 @@ class CameraBase extends React.Component {
     capture = () => {
         const {firebase} = this.props
       const imageSrc = this.webcam.getScreenshot();
-      console.log(imageSrc)
+      //console.log(imageSrc)
       //const newImage = new Blob(imageSrc)
-      const byteCharacters = atob(imageSrc);
+      /*const byteCharacters = atob(imageSrc);
       const byteNumbers = new Array(byteCharacters.length);
         for (let i = 0; i < byteCharacters.length; i++) {
             byteNumbers[i] = byteCharacters.charCodeAt(i);
@@ -27,8 +27,23 @@ class CameraBase extends React.Component {
         var file = blob // use the Blob or File API
 docRef.put(file).then(function(snapshot) {
   console.log('Uploaded a blob or file!');
-});
-      download(imageSrc,'homeless.gif','image/gif')
+});*/
+/*var img_b64 = imageSrc.toDataURL('image/png');
+var png = img_b64.split(',')[1];
+
+var the_file = new Blob([window.atob(png)],  {type: 'image/png', encoding: 'utf-8'});
+
+var fr = new FileReader();
+fr.onload = function ( oFREvent ) {
+    var v = oFREvent.target.result.split(',')[1]; // encoding is messed up here, so we fix it
+    v = atob(v);
+    var good_b64 = btoa(decodeURIComponent(escape(v)));
+    document.getElementById("uploadPreview").src = "data:image/png;base64," + good_b64;
+};
+fr.readAsDataURL(the_file);*/
+      const idk=download(imageSrc,'homeless.gif','image/gif')
+      
+      this.props.pushImgUp(imageSrc)
     };
    
     render() {
@@ -42,12 +57,13 @@ docRef.put(file).then(function(snapshot) {
         <div>
           <Webcam
             audio={false}
-            height={350}
+            height={250}
             ref={this.setRef}
             screenshotFormat="image/jpeg"
             width={350}
             videoConstraints={videoConstraints}
           />
+          
           <button onClick={this.capture}>Capture photo</button>
         </div>
       );
