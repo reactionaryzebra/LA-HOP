@@ -6,6 +6,7 @@ import styled from "styled-components";
 import FormOne from "../styles/FormOne";
 import { withFirebase } from "../components/Firebase";
 import { withRouter } from "react-router-dom";
+import ProgressBar from "./ProgressBar";
 const necessities = ["food", "water", "jacket", "burn", "clothing"];
 
 class FormBase extends React.Component {
@@ -22,7 +23,8 @@ class FormBase extends React.Component {
     burn: false,
     shoes: false,
     selectedFile: null,
-    showCamera: false
+    showCamera: false,
+    currentStep: 0
   };
   fileSelectedHandler = event => {
     this.setState({ selectedFile: event.target.files[0] });
@@ -142,6 +144,8 @@ class FormBase extends React.Component {
         ) : (
           undefined
         )}
+
+        <ProgressBar currentStep={this.state.currentStep} />
 
         <FormOne style={{ display: this.state.pageOneVis }}>
           <h1>{this.state.english ? "Page One" : "Pagino Uno"}</h1>
@@ -392,7 +396,8 @@ class FormBase extends React.Component {
             this.setState({
               pageOneVis: "none",
               pageTwoVis: "inline",
-              pageThreeVis: "none"
+              pageThreeVis: "none",
+              currentStep: 1
             });
           }}
         >
@@ -405,7 +410,8 @@ class FormBase extends React.Component {
             this.setState({
               pageOneVis: "none",
               pageTwoVis: "none",
-              pageThreeVis: "inline"
+              pageThreeVis: "inline",
+              currentStep: 2
             });
           }}
         >

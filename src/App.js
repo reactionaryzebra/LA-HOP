@@ -91,7 +91,6 @@ class AppBase extends React.Component {
         />
         <Route exact path={ROUTES.CONTACT} component={ContactPage} />
         <Route exact path={ROUTES.LEARN} component={LearnPage} />
-        <Route exact path={"/test"} component={ProgressBar} />
         {this.props.location.pathname !== ROUTES.CONTACT && <Footer />}
       </div>
     );
