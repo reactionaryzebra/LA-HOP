@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "antd/dist/antd.css";
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withFirebase } from "./components/Firebase";
@@ -15,6 +16,7 @@ import Status from "./components/Status";
 import Footer from "./components/Footer";
 import ContactPage from "./components/ContactPage";
 import LearnPage from "./components/LearnPage";
+import ProgressBar from "./components/ProgressBar";
 
 class AppBase extends React.Component {
   state = {
@@ -89,6 +91,7 @@ class AppBase extends React.Component {
         />
         <Route exact path={ROUTES.CONTACT} component={ContactPage} />
         <Route exact path={ROUTES.LEARN} component={LearnPage} />
+        <Route exact path={"/test"} component={ProgressBar} />
         {this.props.location.pathname !== ROUTES.CONTACT && <Footer />}
       </div>
     );
