@@ -15,7 +15,17 @@ class AdminBase extends React.Component {
     state = {
         cases:[]
     }
-    markAsResolved = (number)=>{
+    markAsResolved = (number,index)=>{
+        const {firebase, history}=this.props
+        const here = this
+        firebase.db.collection('requests').doc(number.toString()).update({status:'resolved'})
+        let newAwry=[...this.state.cases]
+        newAwry.splice(index,1)
+        console.log(index,'index')
+        console.log(newAwry,'<---newAwry')
+        this.setState({
+            cases:newAwry
+        })
 
     }
     seeStatus=()=>{
@@ -62,7 +72,7 @@ class AdminBase extends React.Component {
             ?this.state.cases.map((article,index)=><><h1>{article.docid}</h1>
                                                     <h2>{article.contactInfo}</h2>
                                                     <h2>{article.descriptionOfNeeds}</h2>
-                                                    <button onClick={()=>{this.markAsResolved(article.docid)}}></button>
+                                                    <button onClick={()=>{this.markAsResolved(article.docid,index)}}>Mark as resolved</button>
                                                     
                                                     
                                                     </>)
