@@ -50,7 +50,7 @@ export class MapInfo extends Component {
     const { latitude, longitude, zoom } = this.state;
     return (
       <div>
-        <button onClick={this.getGeoLocation}>Location</button>
+        <button id="mapLocation" onClick={this.getGeoLocation}>Use current location</button>
         <Autocomplete
           style={{ width: "90%" }}
           onPlaceSelected={place =>
@@ -75,6 +75,7 @@ export class MapInfo extends Component {
         >
           <Marker position={{ lat: latitude, lng: longitude }} />
         </Map>
+
       </div>
     );
   }

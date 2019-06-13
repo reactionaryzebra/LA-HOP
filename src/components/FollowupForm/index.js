@@ -2,13 +2,28 @@ import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 import FollowUp from "../../styles/FollowUp";
 import Input from "../../styles/Input";
+import Select from "../../styles/Select";
 import FormSubmit from "../../styles/FormSubmit";
+
+const describeOptions = [
+  { display: "Concerned Resident", value: "resident" },
+  { display: "Business Owner", value: "busOwner" },
+  { display: "First Responder (Medical, Fire or Police)", value: "responder" },
+  { display: "Social Service Provider", value: "socialService" },
+  {
+    display: "Government Employee (Local, State or Federal)",
+    value: "govEmployee"
+  },
+  { display: "Elected Official", value: "official" },
+  { display: "Other", value: "other" }
+];
 
 class FollowupFormBase extends Component {
   state = {
     fullName: "",
     email: "",
     phone: "",
+    business: "",
     description: "",
     error: null
   };
@@ -29,7 +44,7 @@ class FollowupFormBase extends Component {
   };
 
   render() {
-    const { fullName, email, phone, description } = this.state;
+    const { fullName, email, phone, description, business } = this.state;
     const isInvalid = fullName === "" || email === "" || phone === "";
     return (
       <FollowUp onSubmit={this.handleSubmit}>
@@ -39,6 +54,13 @@ class FollowupFormBase extends Component {
           value={fullName}
           onChange={this.handleChange}
           placeholder="Name"
+        />
+        <Input
+          type="text"
+          name="business"
+          value={business}
+          onChange={this.handleChange}
+          placeholder="Business"
         />
         <Input
           type="email"
@@ -54,15 +76,14 @@ class FollowupFormBase extends Component {
           onChange={this.handleChange}
           placeholder="Phone #"
         />
-        <Input
-          type="text"
-          name="description"
-          value={description}
-          onChange={this.handleChange}
-          placeholder="Tell us more"
-        />
+        <Select>
+          <option>Describe yourself...</option>
+          {describeOptions.map(option => (
+            <option value={option.value}>{option.display}</option>
+          ))}
+        </Select>
         <FormSubmit disabled={isInvalid} type="submit">
-          Submit
+          COMPLETE
         </FormSubmit>
       </FollowUp>
     );

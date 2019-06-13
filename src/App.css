@@ -101,6 +101,59 @@ h5{
   font-size: bold
 }
 
+#address{
+  width:90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom:1px solid rgb(216,216,216);
+  border-right:none;
+  border-left:none;
+  border-top:none;
+}
+
+#date{
+  width:90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom:1px solid rgb(216,216,216);
+  border-right:none;
+  border-left:none;
+  border-top:none;
+  color:rgb(216, 216, 216)
+}
+
+#time{
+  width:90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom:1px solid rgb(216,216,216);
+  border-right:none;
+  border-left:none;
+  border-top:none;
+  color:rgb(216, 216, 216)
+}
+
+#mapLocation{
+  background-color:rgb(216, 216, 216);
+  margin-top:-28px;
+  margin-left:85px;
+  font-weight: bolder;
+  position: absolute;
+  width:150px;
+  height:27px;
+  border:1px solid black
+}
+
+#location{
+  width:90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom:1px solid rgb(216,216,216);
+  border-right:none;
+  border-left:none;
+  border-top:none;
+}
+
 .App-link {
   color: #61dafb;
 }

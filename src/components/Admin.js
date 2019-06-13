@@ -18,7 +18,34 @@ class AdminBase extends React.Component {
     markAsResolved = (number,index)=>{
         const {firebase, history}=this.props
         const here = this
-        firebase.db.collection('requests').doc(number.toString()).update({status:'resolved'})
+        firebase.db.collection('requests').doc(number.toString()).update({status:'contacted'})
+        let newAwry=[...this.state.cases]
+        newAwry.splice(index,1)
+        console.log(index,'index')
+        console.log(newAwry,'<---newAwry')
+        this.setState({
+            cases:newAwry
+        })
+
+    }
+    markAsAssisted = (number,index)=>{
+        const {firebase, history}=this.props
+        const here = this
+        firebase.db.collection('requests').doc(number.toString()).update({status:'contacted and assisted'})
+        let newAwry=[...this.state.cases]
+        newAwry.splice(index,1)
+        console.log(index,'index')
+        console.log(newAwry,'<---newAwry')
+        this.setState({
+            cases:newAwry
+        })
+
+    }
+
+    markAsUnfound = (number,index)=>{
+        const {firebase, history}=this.props
+        const here = this
+        firebase.db.collection('requests').doc(number.toString()).update({status:'unable to be found'})
         let newAwry=[...this.state.cases]
         newAwry.splice(index,1)
         console.log(index,'index')
@@ -54,6 +81,9 @@ class AdminBase extends React.Component {
         });
         
     }}
+    componentDidMount(){
+        console.log("Hrak... this ones for you")
+    }
 
    
     render() {
@@ -73,7 +103,9 @@ class AdminBase extends React.Component {
             ?this.state.cases.map((article,index)=><><h4>{article.docid}</h4>
                                                     <h4>{article.contactInfo}</h4>
                                                     <h4>{article.descriptionOfNeeds}</h4>
-                                                    <button onClick={()=>{this.markAsResolved(article.docid,index)}}>Mark as resolved</button>
+                                                    <button onClick={()=>{this.markAsResolved(article.docid,index)}}>Contacted</button>
+                                                    <button onClick={()=>{this.markAsAssisted(article.docid,index)}}>Assisted</button>
+                                                    <button onClick={()=>{this.markAsAssisted(article.docid,index)}}>Unfound</button>
                                                     
                                                     
                                                     </>)

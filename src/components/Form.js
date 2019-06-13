@@ -143,7 +143,8 @@ class FormBase extends React.Component {
 
         <FormOne style={{ display: this.state.pageOneVis }}>
           <h1>{this.state.english ? "Location" : "Ubicaccion"}</h1>
-          <br />
+          <h5>Tell us where and when you saw the person in need.</h5>
+          
           <Map pushLatLongUp={this.props.pushLatLongUp} />
           <br />
           <br />
@@ -159,13 +160,20 @@ class FormBase extends React.Component {
           <br />
           <br />
           <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
 
           <input
+          
             id="address"
             style={{ display: this.state.pageOneVis }}
             placeholder={this.state.english ? "Address" : "dirección"}
           />
           <br />
+          <br/>
           <input
             type="date"
             id="date"
@@ -173,9 +181,23 @@ class FormBase extends React.Component {
             placeholder="Date"
           />
           <br />
+            <br/>
+            <textarea
+            type="time"
+            
+            id="time"
+            style={{ display: this.state.pageOneVis }}
+            placeholder={
+              this.state.english
+                ? "Time"
+                : "Tiempo"
+            }
+          />
 
+            <br />
+            <br/>
           <textarea
-            type="date"
+            
             id="location"
             style={{ display: this.state.pageOneVis }}
             placeholder={
