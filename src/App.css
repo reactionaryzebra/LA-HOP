@@ -152,8 +152,13 @@ h5 {
   background-color: rgb(19, 115, 142);
   border:2px solid black;
   margin-left:2%;
-  margin-right:2%;
+  margin-right:10%;
   border-radius:18%;
+}
+
+.adminHeader{
+  color:rgb(19, 115, 142);
+  margin-top:20px
 }
 
 #time {
@@ -252,4 +257,15 @@ h5 {
   margin-bottom: 30px;
   margin-top: -20px;
   margin-left: 70px;
+}
+#getPassword{
+  background-color:rgb(216,216,216);
+  width:70%;
+  margin-left:20px
+}
+#getPasswordButton{
+  background-color:rgb(19, 115, 142)
+}
+#idThing{
+  margin-left: 20px;
 }

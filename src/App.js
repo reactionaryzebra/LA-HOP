@@ -90,6 +90,15 @@ class AppBase extends React.Component {
             />
           )}
         />
+        <Route
+          exact
+          path={ROUTES.ADMIN}
+          render={() => (
+            <Admin
+
+            />
+          )}
+        />
         <Route exact path={ROUTES.CONTACT} component={ContactPage} />
         <Route exact path={ROUTES.LEARN} component={LearnPage} />
         {this.props.location.pathname !== ROUTES.CONTACT && <Footer />}

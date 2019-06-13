@@ -93,16 +93,16 @@ class AdminBase extends React.Component {
       return (
         <div>
             
-        <h1>What are the unresolved cases?</h1>
+        <h1 className='adminHeader'>Admin</h1>
         
         <input type="password" id="getPassword" placeholder="Password"/>
 
-        <button onClick={()=>{this.seeStatus()}}>Get cases</button>
+        <button id="getPasswordButton" onClick={()=>{this.seeStatus()}}>Get cases</button>
         <br/>
         <br/>
         
         {this.state.cases
-            ?this.state.cases.map((article,index)=><><h4>ID: {article.docid}</h4>
+            ?this.state.cases.map((article,index)=><><h4 id='idThing'>ID: {article.docid}</h4>
                                                     <ul>
                                                     <li>Reportee contact info: {article.contactInfo}</li>
                                                     <li>Description of needs: {article.descriptionOfNeeds}</li>
