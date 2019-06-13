@@ -11,6 +11,11 @@ const Confirmation = styled.div`
     margin-right: 66px;
     margin-bottom: 32px;
   }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   h2 {
     font-family: Raleway;
     font-size: 18px;

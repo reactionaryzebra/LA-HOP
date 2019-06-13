@@ -13,8 +13,8 @@ const Nav = styled.nav`
     width: 215px;
   }
   img {
-    width: 80px;
-    height: 60px;
+    width: 43px;
+    height: 40px;
   }
   a {
     display: flex;

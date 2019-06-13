@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FollowupForm from "../FollowupForm";
 import Confirmation from "../../styles/Confirmation";
+import H1 from "../../styles/H1";
 
 class ConfirmationPage extends Component {
   state = {
@@ -16,7 +17,7 @@ class ConfirmationPage extends Component {
       <Confirmation>
         <div className="top">
           <div>
-            <h2>THANK YOU!</h2>
+            <H1>THANK YOU!</H1>
             <p>
               Your request has been received and will be referred to a homeless
               outreach team for follow-up. We appreciate your support in
@@ -24,7 +25,7 @@ class ConfirmationPage extends Component {
             </p>
           </div>
           <div>
-            <h2>KEEP ME POSTED</h2>
+            <H1>KEEP ME POSTED</H1>
             <p>
               Want to find out what will happen now that you've submitted your
               request? Provide your contact information, and we'll send you a
@@ -33,21 +34,38 @@ class ConfirmationPage extends Component {
           </div>
         </div>
         <FollowupForm setSubmitted={this.setSubmitted} />
-        {this.state.submitted && <p>We'll be in touch!</p>}
-        <div>
-          <h2>MORE WAYS TO HELP</h2>
+        {this.state.submitted && (
           <div>
-            <div>
-              <label>Get Involved</label>
+            <p className={"confirmationMessage"}>We'll be in touch! </p>
+            <p className={"confirmationMessage"}>
+              Check on the progress &nbsp;
+              <a
+                href={`https://la-hop.firebaseapp.com/status/
+              ${this.props.requestNumber}`}
+              >
+                here
+              </a>
+            </p>
+          </div>
+        )}
+        <div className={"bottom"}>
+          <H1>MORE WAYS TO HELP</H1>
+          <div className={"waysToHelpContainer"}>
+            <div className={"wayToHelp"}>
+              <img src="images/high-five.png" />
+              <label>GET INVOLVED</label>
             </div>
-            <div>
-              <label>Volunteer LA</label>
+            <div className={"wayToHelp"}>
+              <img src="images/volunteer-la.png" />
+              <label>VOLUNTEER LA</label>
             </div>
-            <div>
-              <label>Contact Local Representative</label>
+            <div className={"wayToHelp"}>
+              <img src="images/path-la.png" />
+              <label>DONATE TO PATH</label>
             </div>
-            <div>
-              <label>Volunteer with Homeful LA</label>
+            <div className={"wayToHelp"}>
+              <img src="images/family-housing.png" />
+              <label>DONATE TO LA FAMILY HOUSING</label>
             </div>
           </div>
         </div>

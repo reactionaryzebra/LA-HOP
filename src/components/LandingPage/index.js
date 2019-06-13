@@ -10,8 +10,8 @@ const LandingPageBase = props => (
     <header>
       <p>
         <strong>
-          LA-HOP is designed to assist people experiencing homelessness in Los
-          Angeles County with outreach services.
+          LA-Homeless Outreach Portal is designed to assist people experiencing
+          homelessness in Los Angeles County with outreach services.
         </strong>
         <br />
         <br />

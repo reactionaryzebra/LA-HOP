@@ -8,7 +8,14 @@ import { withFirebase } from "../components/Firebase";
 import { withRouter } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
 
-const necessities = ["food", "water", "jacket", "burn", "clothing"];
+const necessities = [
+  "mentalHealth",
+  "substanceAbuse",
+  "nonUrgentMedical",
+  "hygiene",
+  "clothing",
+  "childCare"
+];
 
 class FormBase extends React.Component {
   state = {
@@ -18,11 +25,11 @@ class FormBase extends React.Component {
     pageTwoVis: "none",
     pageThreeVis: "none",
     clothing: false,
-    food: false,
-    water: false,
-    jacket: false,
-    burn: false,
-    shoes: false,
+    mentalHealth: false,
+    substanceAbuse: false,
+    nonUrgentMedical: false,
+    hygiene: false,
+    childCare: false,
     selectedFile: null,
     showCamera: false,
     currentStep: 0,
@@ -38,7 +45,6 @@ class FormBase extends React.Component {
     console.log("Now upload it to whereever");
   };
   sendItUp = () => {
-    const address = document.getElementById("address").value;
     const date = document.getElementById("date").value;
     const location = document.getElementById("location").value;
     const numberOfPeople = document.getElementById("numberOfPeople").value;
@@ -53,26 +59,25 @@ class FormBase extends React.Component {
     const other = document.getElementById("other").value;
     const img = document.getElementById("image").value;
     let newNecessities = [];
-    if (this.state.burn) {
-      newNecessities.push("burn");
+    if (this.state.hygiene) {
+      newNecessities.push("hygiene");
     }
-    if (this.state.water) {
-      newNecessities.push("water");
+    if (this.state.substanceAbuse) {
+      newNecessities.push("substanceAbuse");
     }
-    if (this.state.jacket) {
-      newNecessities.push("jacket");
+    if (this.state.nonUrgentMedical) {
+      newNecessities.push("nonUrgentMedical");
     }
     if (this.state.clothing) {
       newNecessities.push("clothing");
     }
-    if (this.state.food) {
-      newNecessities.push("food");
+    if (this.state.mentalHealth) {
+      newNecessities.push("mentalHealth");
     }
-    if (this.state.shoes) {
-      newNecessities.push("shoes");
+    if (this.state.childCare) {
+      newNecessities.push("childCare");
     }
     const objectToSend = {
-      address,
       date,
       location,
       numberOfPeople,
@@ -211,6 +216,7 @@ class FormBase extends React.Component {
             <br />
             <br />
             <br />
+            <label>DATE*</label>
             <input
               type="date"
               id="date"
@@ -219,6 +225,7 @@ class FormBase extends React.Component {
             />
             <br />
             <br />
+            <label>TIME*</label>
             <input
               type="time"
               id="time"
@@ -227,6 +234,7 @@ class FormBase extends React.Component {
             />
             <br />
             <br />
+            <label>DESCRIPTION OF LOCATION*</label>
             <textarea
               id="location"
               style={{ display: this.state.pageOneVis }}
@@ -256,60 +264,43 @@ class FormBase extends React.Component {
         </FormOne>
 
         <FormOne style={{ display: this.state.pageTwoVis }}>
-          <div className='gradientDiv'>
-          <h1 className="optionalHomeless">{this.state.english ? "Optional: Homeless Contact" : "Detalles de personas sin hogar"}</h1>
-          <h5>{this.state.english?"Tell us more about the person in need and provide optional contact information for them.":"Díganos más acerca de la persona que lo necesita y bríndeles información de contacto opcional."}</h5>
-          <br/>
-          
-          <input
-            id="numberOfPeople"
-            type="number"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english ? "Number of people" : "número de personas"
-            }
-          />
-          <br/>
-          <br/>
-          {this.state.english?"Optional: contact details for homeless person in need.":"Opcional: datos de contacto para personas sin hogar en necesidad"}
-          
-          
-          <div className='lightBackground'>
+          <div className="gradientDiv">
+            <h1 className="optionalHomeless">
+              {this.state.english
+                ? "Optional: Homeless Contact"
+                : "Detalles de personas sin hogar"}
+            </h1>
+            <h5>
+              {this.state.english
+                ? "Tell us more about the person in need and provide optional contact information for them."
+                : "Díganos más acerca de la persona que lo necesita y bríndeles información de contacto opcional."}
+            </h5>
+            <br />
 
-          
-          
-          <br/>
-          <input className='nameInput' placeholder="name"/>
-          <br />
-          <br />
+            <input
+              id="numberOfPeople"
+              type="number"
+              style={{ display: this.state.pageTwoVis }}
+              placeholder={
+                this.state.english ? "Number of people" : "número de personas"
+              }
+            />
+            <br />
+            <br />
+            {this.state.english
+              ? "Optional: contact details for homeless person in need."
+              : "Opcional: datos de contacto para personas sin hogar en necesidad"}
 
-          <br/>
-          <p style={{marginLeft:'15px'}}>{this.state.english?"Phone Number":"Número de teléfono"}</p>
-          <div id="phoneNumberDiv">
-              <input id="phoneOne" className='phoneNumber'/>  -<input id="phoneTwo" className='phoneNumber'/>  -<input id='phoneThree' className='phoneNumber'/>
-          </div>
-          <br />
-          </div>
-          <br/>
-        <br/>
-          <button
-          className="nextButton"
-          style={{ display: this.state.pageTwoVis }}
-          
-          onClick={() => {
-            this.setState({
-              pageOneVis: "none",
-              pageTwoVis: "none",
-              pageThreeVis: "inline",
-              currentStep: 2
-            });
-          }}
-        >
-          {this.state.english ? "NEXT" : "Siguiente"}
-        </button>
+            <div className="lightBackground">
+              <br />
+              <input className="nameInput" placeholder="Name" />
+              <br />
+              <br />
 
               <br />
-              <p style={{ marginLeft: "15px" }}>Phone Number</p>
+              <p style={{ marginLeft: "15px" }}>
+                {this.state.english ? "Phone Number" : "Número de teléfono"}
+              </p>
               <div id="phoneNumberDiv">
                 <input id="phoneOne" className="phoneNumber" /> -
                 <input id="phoneTwo" className="phoneNumber" /> -
@@ -337,46 +328,43 @@ class FormBase extends React.Component {
         </FormOne>
 
         <FormOne style={{ display: this.state.pageThreeVis }}>
-        <div className='gradientDiv'>
-          <h2>{this.state.english ? "Person in Need Description" : "Descripción de personas sin hogar"}</h2>
-          <h5>{this.state.english?"Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs.":"Proporcione una descripción detallada de la (s) persona (s) que necesita la apariencia física y su mejor evaluación de sus necesidades."}</h5>
-          <br />
-          <img className="cameraImg" src='https://cdn1.iconfinder.com/data/icons/iconmart-web-icons-2/64/camera-512.png'/>
-          <input type="file" id="image" accept="image/*" capture="camera" />
-          <br />
-          <h2>{this.state.english?"Add a Photo":"Agregar una foto"}</h2>
-          <h5>{this.state.english?'Take or upload a photo (optional).  If the person(s) is exhibiting behavior that is endangering themselves or the public, or need immediate medical, call 911 immediately.':'Toma o sube una foto (opcional). Si la (s) persona (s) muestra un comportamiento que pone en peligro a sí mismo o al público, o necesita atención médica inmediata, llame al 911 inmediatamente.'}</h5>
-
-          <textarea 
-          className='descriptionArea'
-            id="descriptionOfSelf"
-            style={{ display: this.state.pageThreeVis }}
-            placeholder={
-              this.state.english
-                ? "Description of self"
-                : "descripción de ti mismo"
-            }
-          />
-          <br />
-                          <br/>
-            <input type="checkbox"/>{this.state.english?'I have read and understand the Learn More section.':'He leído y entiendo la sección Aprende más.'}
-
-          <br />
-          <h5>{this.state.english?'Their needs:':'Sus necesidades:'}</h5>
-
+          <div className="gradientDiv">
+            <h2>
+              {this.state.english
+                ? "Homeless Description"
+                : "Descripción de personas sin hogar"}
+            </h2>
+            <h5>
+              {this.state.english
+                ? "Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs."
+                : "Proporcione una descripción detallada de la (s) persona (s) que necesita la apariencia física y su mejor evaluación de sus necesidades."}
+            </h5>
+            <br />
+            <img
+              className="cameraImg"
+              src="https://cdn1.iconfinder.com/data/icons/iconmart-web-icons-2/64/camera-512.png"
+            />
+            <input type="file" id="image" accept="image/*" capture="camera" />
+            <br />
+            <h2>{this.state.english ? "ADD A PHOTO" : "Agregar una foto"}</h2>
+            <h5>
+              {this.state.english
+                ? "Take or upload a photo (optional), and please be respectful. If the person(s) is exhibiting behavior that is endangering themselves or the public, or need immediate medical attention, call 911 immediately."
+                : "Toma o sube una foto (opcional). Si la (s) persona (s) muestra un comportamiento que pone en peligro a sí mismo o al público, o necesita atención médica inmediata, llame al 911 inmediatamente."}
+            </h5>
+            <label>DESCRIPTION</label>
             <textarea
               className="descriptionArea"
               id="descriptionOfSelf"
               style={{ display: this.state.pageThreeVis }}
               placeholder={
                 this.state.english
-                  ? "Description of self"
+                  ? "Has a limp, appears to be speaking to someone who is not there, also has swollen legs.  Has mentioned needing help. Potentially interested in shelter."
                   : "descripción de ti mismo"
               }
             />
-
-
-
+            <br />
+            <br />
             <br />
             <h5>Their needs:</h5>
 
@@ -395,87 +383,99 @@ class FormBase extends React.Component {
                   this.state.clothing ? "homelessNeedsClicked" : "homelessNeeds"
                 }
               >
-                {this.state.english ? "clothing" : "la ropa"}
+                {this.state.english ? "Clothing" : "la ropa"}
               </div>
               <div
                 onClick={() => {
-                  !this.state.food
+                  !this.state.mentalHealth
                     ? this.setState({
-                        food: true
+                        mentalHealth: true
                       })
                     : this.setState({
-                        food: false
+                        mentalHealth: false
                       });
                 }}
                 className={
-                  this.state.food ? "homelessNeedsClicked" : "homelessNeeds"
+                  this.state.mentalHealth
+                    ? "homelessNeedsClicked"
+                    : "homelessNeeds"
                 }
               >
-                {this.state.english ? "food" : "comida"}
+                {this.state.english ? "Mental Health" : "salud mental"}
               </div>
               <div
                 onClick={() => {
-                  !this.state.water
+                  !this.state.substanceAbuse
                     ? this.setState({
-                        water: true
+                        substanceAbuse: true
                       })
                     : this.setState({
-                        water: false
+                        substanceAbuse: false
                       });
                 }}
                 className={
-                  this.state.water ? "homelessNeedsClicked" : "homelessNeeds"
+                  this.state.substanceAbuse
+                    ? "homelessNeedsClicked"
+                    : "homelessNeeds"
                 }
               >
-                {this.state.english ? "water" : "la agua"}
+                {this.state.english
+                  ? "Non-Urgent Medical"
+                  : "médico no urgente"}
               </div>
               <div
                 onClick={() => {
-                  !this.state.burn
+                  !this.state.hygiene
                     ? this.setState({
-                        burn: true
+                        hygiene: true
                       })
                     : this.setState({
-                        burn: false
+                        hygiene: false
                       });
                 }}
                 className={
-                  this.state.burn ? "homelessNeedsClicked" : "homelessNeeds"
+                  this.state.hygiene ? "homelessNeedsClicked" : "homelessNeeds"
                 }
               >
-                {this.state.english ? "burn medication" : "quemar medicación"}
+                {this.state.english ? "Substance Abuse" : "abuso de sustancias"}
               </div>
               <div
                 onClick={() => {
-                  !this.state.jacket
+                  !this.state.nonUrgentMedical
                     ? this.setState({
-                        jacket: true
+                        nonUrgentMedical: true
                       })
                     : this.setState({
-                        jacket: false
+                        nonUrgentMedical: false
                       });
                 }}
                 className={
-                  this.state.jacket ? "homelessNeedsClicked" : "homelessNeeds"
+                  this.state.nonUrgentMedical
+                    ? "homelessNeedsClicked"
+                    : "homelessNeeds"
                 }
               >
-                {this.state.english ? "jacket" : "chaqueta"}
+                {this.state.english ? "Hygiene" : "higiene"}
               </div>
               <div
                 onClick={() => {
-                  !this.state.shoes
+                  !this.state.childCare
                     ? this.setState({
-                        shoes: true
+                        childCare: true
                       })
                     : this.setState({
-                        shoes: false
+                        childCare: false
                       });
                 }}
                 className={
-                  this.state.shoes ? "homelessNeedsClicked" : "homelessNeeds"
+                  this.state.childCare
+                    ? "homelessNeedsClicked"
+                    : "homelessNeeds"
                 }
               >
-                {this.state.english ? "shoes" : "los zapatos"}
+                {this.state.english
+                  ? "Child or Baby Care"
+                  : "cuidado de niños o bebés"}
               </div>
               <input
                 className="otherInput"
