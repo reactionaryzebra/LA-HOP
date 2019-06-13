@@ -19,139 +19,148 @@
   color: white;
 }
 
-.nextButton{
-  width:100%;
-  background-color:rgb(216,216,216);
-  color:black;
-  border:2px solid black
+#root {
+  height: 100%;
+  position: relative;
 }
-.navBar{
-  width:100%;
-  height:15%;
+
+#main-content {
+  height: 100%;
+  position: relative;
+}
+
+.nextButton {
+  width: 100%;
+  background-color: rgb(216, 216, 216);
+  color: black;
+  border: 2px solid black;
+}
+.navBar {
+  width: 100%;
+  height: 15%;
   align-content: center;
   display: inline-block;
-  background-color:grey;
-  color:black;
-  border:5px solid black
-
+  background-color: grey;
+  color: black;
+  border: 5px solid black;
 }
 
-h1{
-  text-align: center
+h1 {
+  text-align: center;
 }
-h2{
-  text-align: center
+h2 {
+  text-align: center;
 }
-h5{
-  text-align: center
+h5 {
+  text-align: center;
 }
 
-.phoneNumber{
+.phoneNumber {
   background-color: rgb(216, 216, 216);
-  border:1px solid black;
-  width:30px;
-  height:30px;
-  margin-left: 10px
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
 }
-#phoneThree{
-  width:50px
+#phoneThree {
+  width: 50px;
 }
-#numberOfPeople{
-  margin-left:15px
-}
-
-.phoneNumberDiv{
-  margin-left:10px
+#numberOfPeople {
+  margin-left: 15px;
 }
 
-.circle{
-  width:10%;
+.phoneNumberDiv {
+  margin-left: 10px;
+}
+
+.circle {
+  width: 10%;
   height: 10%;
-  border-radius:50%;
-  border:2px solid black;
-  display:inline-block
+  border-radius: 50%;
+  border: 2px solid black;
+  display: inline-block;
 }
 
-.circle_filled{
-  width:10%;
-  height:10%;
-  border-radius:50%;
-  border:2px solid black;
+.circle_filled {
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
+  border: 2px solid black;
   background-color: gray;
-  display:inline-block
+  display: inline-block;
 }
-.flagIcon{
-  height:10%;
-  width:10%;
-  float:right;
-  margin-right:30px;
+.flagIcon {
+  height: 10%;
+  width: 10%;
+  float: right;
+  margin-right: 30px;
   margin-top: -68px;
 }
 .nameInput {
   width: 87%;
-  border-right:none;
-  border-left:none;
-  border-top:none;
-  border-bottom: 2px solid rgb(216,216,216);
-  color:rgb(216,216,216);
-  margin-left:15px
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 2px solid rgb(216, 216, 216);
+  color: rgb(216, 216, 216);
+  margin-left: 15px;
 }
 
-#numberOfPeople{
-  font-size: bold
+#numberOfPeople {
+  font-size: bold;
 }
 
-#address{
-  width:90%;
+#address {
+  width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  border-bottom:1px solid rgb(216,216,216);
-  border-right:none;
-  border-left:none;
-  border-top:none;
+  border-bottom: 1px solid rgb(216, 216, 216);
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
 
-#date{
-  width:90%;
+#date {
+  width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  border-bottom:1px solid rgb(216,216,216);
-  border-right:none;
-  border-left:none;
-  border-top:none;
-  color:rgb(216, 216, 216)
+  border-bottom: 1px solid rgb(216, 216, 216);
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  color: rgb(216, 216, 216);
 }
 
-#time{
-  width:90%;
+#time {
+  width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  border-bottom:1px solid rgb(216,216,216);
-  border-right:none;
-  border-left:none;
-  border-top:none;
-  color:rgb(216, 216, 216)
+  border-bottom: 1px solid rgb(216, 216, 216);
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  color: rgb(216, 216, 216);
 }
 
-#mapLocation{
-  background-color:rgb(216, 216, 216);
-  margin-top:-28px;
-  margin-left:85px;
+#mapLocation {
+  background-color: rgb(216, 216, 216);
+  margin-top: -28px;
+  margin-left: 85px;
   font-weight: bolder;
   position: absolute;
-  width:150px;
-  height:27px;
-  border:1px solid black
+  width: 150px;
+  height: 27px;
+  border: 1px solid black;
 }
 
-#location{
-  width:90%;
+#location {
+  width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  border-bottom:1px solid rgb(216,216,216);
-  border-right:none;
-  border-left:none;
-  border-top:none;
+  border-bottom: 1px solid rgb(216, 216, 216);
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
 
 .App-link {
@@ -168,9 +177,9 @@ h5{
 }
 .mapContainer {
   width: 40%;
-  padding-top: 2em; 
+  padding-top: 2em;
   padding-left: 2em;
-  height:50%
+  height: 50%;
 }
 .formOne {
   display: flex;
@@ -178,45 +187,44 @@ h5{
   align-items: center;
   height: 100vh;
 }
-.homelessNeeds{
+.homelessNeeds {
   background-color: rgb(209, 209, 212);
-  width:45%;
+  width: 45%;
   margin-bottom: 2%;
-  display:inline-block;
+  display: inline-block;
   margin-left: 1%;
   text-align: center;
-  border:2px solid black
+  border: 2px solid black;
 }
-.homelessNeedsClicked{
+.homelessNeedsClicked {
   background-color: grey;
-  width:45%;
+  width: 45%;
   margin-bottom: 2%;
-  display:inline-block;
+  display: inline-block;
   margin-left: 1%;
-  text-align:center;
-  border:2px solid black
+  text-align: center;
+  border: 2px solid black;
 }
-.otherInput{
-  border-bottom: 1px solid rgb(216,216,216);
-  width:100%;
-  border-left:none;
-  border-right:none;
-  border-top:none;
-  
+.otherInput {
+  border-bottom: 1px solid rgb(216, 216, 216);
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
 
-.descriptionArea{
-  width:322px;
-  height:74px;
+.descriptionArea {
+  width: 322px;
+  height: 74px;
   margin-right: 19px;
   margin-left: 19px;
-  background-color: rgb(216, 216, 216)
+  background-color: rgb(216, 216, 216);
 }
-.cameraImg{
-  width:208px;
-  height:160px;
+.cameraImg {
+  width: 208px;
+  height: 160px;
   margin-right: 90px;
   margin-bottom: 30px;
-  margin-top:-20px;
-  margin-left:70px
+  margin-top: -20px;
+  margin-left: 70px;
 }

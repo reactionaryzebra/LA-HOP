@@ -4,7 +4,6 @@ const Confirmation = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   font-family: open-sans;
   .top {
     margin-top: 43px;

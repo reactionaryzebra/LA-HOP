@@ -46,7 +46,7 @@ class AppBase extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div id="main-content">
         <NavBar />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route exact path={ROUTES.REPORT} component={Map} />
