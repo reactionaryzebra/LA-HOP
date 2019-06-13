@@ -38,14 +38,12 @@ class FormBase extends React.Component {
     const date = document.getElementById("date").value;
     const location = document.getElementById("location").value;
     const numberOfPeople = document.getElementById("numberOfPeople").value;
-    const descriptionOfPerson = document.getElementById("descriptionOfPerson")
-      .value;
-    const descriptionOfNeeds = document.getElementById("descriptionOfNeeds")
-      .value;
-    const contactInfo = document.getElementById("contactInfo").value;
+
+   
+    const contactInfo = document.getElementById("phoneOne").value+document.getElementById("phoneTwo").value+document.getElementById("phoneThree").value;
     const descriptionOfSelf = document.getElementById("descriptionOfSelf")
       .value;
-    const reporterInfo = document.getElementById("reporterInfo").value;
+
     const other = document.getElementById("other").value;
     const img = document.getElementById("image").value;
     let newNecessities = [];
@@ -72,13 +70,11 @@ class FormBase extends React.Component {
       date,
       location,
       numberOfPeople,
-      descriptionOfPerson,
-      descriptionOfNeeds,
       contactInfo,
       descriptionOfSelf,
-      reporterInfo,
+     
       newNecessities,
-      status: "contacted and helped! :)",
+      status: "pending",
       other,
       coordinates: this.props.coordinates
     };
@@ -116,6 +112,7 @@ class FormBase extends React.Component {
       <div>
         {!this.state.english ? (
           <img
+            className="flagIcon"
             style={{
               display: this.state.english ? "inlineBlock" : "inlineBlock"
             }}
@@ -131,6 +128,7 @@ class FormBase extends React.Component {
         )}
         {this.state.english ? (
           <img
+            className="flagIcon"
             style={{
               display: !this.state.english ? "inlineBlock" : "inlineBlock"
             }}
@@ -148,8 +146,9 @@ class FormBase extends React.Component {
         <ProgressBar currentStep={this.state.currentStep} />
 
         <FormOne style={{ display: this.state.pageOneVis }}>
-          <h1>{this.state.english ? "Page One" : "Pagino Uno"}</h1>
-          <br />
+          <h1>{this.state.english ? "Location" : "Ubicaccion"}</h1>
+          <h5>Tell us where and when you saw the person in need.</h5>
+          
           <Map pushLatLongUp={this.props.pushLatLongUp} />
           <br />
           <br />
@@ -165,13 +164,20 @@ class FormBase extends React.Component {
           <br />
           <br />
           <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
 
           <input
+          
             id="address"
             style={{ display: this.state.pageOneVis }}
             placeholder={this.state.english ? "Address" : "dirección"}
           />
           <br />
+          <br/>
           <input
             type="date"
             id="date"
@@ -179,9 +185,23 @@ class FormBase extends React.Component {
             placeholder="Date"
           />
           <br />
+            <br/>
+            <textarea
+            type="time"
+            
+            id="time"
+            style={{ display: this.state.pageOneVis }}
+            placeholder={
+              this.state.english
+                ? "Time"
+                : "Tiempo"
+            }
+          />
 
+            <br />
+            <br/>
           <textarea
-            type="date"
+            
             id="location"
             style={{ display: this.state.pageOneVis }}
             placeholder={
@@ -193,7 +213,8 @@ class FormBase extends React.Component {
         </FormOne>
 
         <FormOne style={{ display: this.state.pageTwoVis }}>
-          <h1>{this.state.english ? "Page Two" : "Página dos"}</h1>
+          <h1>{this.state.english ? "Person in Need Details" : "Detalles de personas sin hogar"}</h1>
+          <h5>Tell us more about the person in need and provide optional contact information for them.</h5>
           <input
             id="numberOfPeople"
             type="number"
@@ -203,45 +224,31 @@ class FormBase extends React.Component {
             }
           />
           <br />
-          <textarea
-            id="descriptionOfPerson"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english
-                ? "Description of person"
-                : "descripción de la persona"
-            }
-          />
+          <br/>
+          <input className='nameInput' placeholder="name"/>
           <br />
-          <textarea
-            id="descriptionOfNeeds"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english
-                ? "Description of needs"
-                : "descripción de las necesidades"
-            }
-          />
           <br />
-          <textarea
-            id="contactInfo"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english
-                ? "Contact Info (if possible)"
-                : "Información del contacto"
-            }
-          />
+
+          <br/>
+          <p style={{marginLeft:'15px'}}>Phone Number</p>
+          <div id="phoneNumberDiv">
+              <input id="phoneOne" className='phoneNumber'/>  -<input id="phoneTwo" className='phoneNumber'/>  -<input id='phoneThree' className='phoneNumber'/>
+          </div>
           <br />
         </FormOne>
 
         <FormOne style={{ display: this.state.pageThreeVis }}>
-          <h1>{this.state.english ? "Page Three" : "Página tres"}</h1>
+          <h2>{this.state.english ? "Person in Need Description" : "Descripción de personas sin hogar"}</h2>
+          <h5>Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs.</h5>
           <br />
+          <img className="cameraImg" src='https://cdn1.iconfinder.com/data/icons/iconmart-web-icons-2/64/camera-512.png'/>
           <input type="file" id="image" accept="image/*" capture="camera" />
           <br />
+          <h2>Add a Photo</h2>
+          <h5>Take or upload a photo (optional).  If the person(s) is exhibiting behavior that is endangering themselves or the public, or need immediate medical, call 911 immediately.</h5>
 
-          <textarea
+          <textarea 
+          className='descriptionArea'
             id="descriptionOfSelf"
             style={{ display: this.state.pageThreeVis }}
             placeholder={
@@ -251,17 +258,9 @@ class FormBase extends React.Component {
             }
           />
           <br />
-          <input
-            id="reporterInfo"
-            style={{ display: this.state.pageThreeVis }}
-            placeholder={
-              this.state.english
-                ? "Reporter contact info"
-                : "informacion de contacto del reportero"
-            }
-          />
+
           <br />
-          <h5>What the reportee needs:</h5>
+          <h5>Their needs:</h5>
 
           <div className="needList">
             <div
@@ -360,10 +359,14 @@ class FormBase extends React.Component {
             >
               {this.state.english ? "shoes" : "los zapatos"}
             </div>
+            
             <input
+                className='otherInput'
               id="other"
               placeholder={this.state.english ? "other:" : "otro:"}
             />
+            <br/>
+            <input type="checkbox"/>I have read and understand the Learn More section.
 
             <button
               className="nextButton"
@@ -403,9 +406,11 @@ class FormBase extends React.Component {
         >
           {this.state.english ? "NEXT" : "Siguiente"}
         </button>
+        
         <button
           className="nextButton"
           style={{ display: this.state.pageTwoVis }}
+          
           onClick={() => {
             this.setState({
               pageOneVis: "none",

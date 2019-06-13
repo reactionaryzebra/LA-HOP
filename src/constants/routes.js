@@ -7,3 +7,4 @@ export const FORM = "/form";
 export const STATUS = "/status";
 export const CONTACT = "/contact";
 export const LEARN = "/learn-more";
+export const ADMIN = '/admin';
