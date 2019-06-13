@@ -2,18 +2,17 @@
   text-align: center;
 }
 
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
 
-.optionalHomeless{
-  color: rgb(0,76,115)
+.optionalHomeless {
+  color: rgb(0, 76, 115);
 }
-.lightBackground{
-  background-color: rgba(22,162,184,.1)
+.lightBackground {
+  background-color: rgba(22, 162, 184, 0.1);
 }
 
 .App-header {
@@ -37,16 +36,16 @@
   position: relative;
 }
 
-.nextButton{
-  width:100%;
-  font-weight:bold;
-  font-size:22px;
-  
+.nextButton {
+  width: 100%;
+  font-weight: bold;
+  font-size: 22px;
+
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color:rgb(19,115,142);
-  color:white;
-  border:2px solid white
+  background-color: rgb(19, 115, 142);
+  color: white;
+  border: 2px solid white;
 }
 .navBar {
   width: 100%;
@@ -68,12 +67,12 @@ h5 {
   text-align: center;
 }
 
-.phoneNumber{
+.phoneNumber {
   background-color: white;
-  border:1px solid black;
-  width:30px;
-  height:30px;
-  margin-left: 10px
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
 }
 #phoneThree {
   width: 50px;
@@ -102,25 +101,30 @@ h5 {
   background-color: gray;
   display: inline-block;
 }
-.flagIcon{
-  height:6%;
-  width:6%;
-  float:right;
-  margin-right:38px;
+.flagIcon {
+  height: 6%;
+  width: 6%;
+  float: right;
+  margin-right: 38px;
   margin-top: -36px;
 }
 
-.gradientDiv{
-  background-image:linear-gradient(white, rgb(236,238,238))
+.gradientDiv {
+  background-image: linear-gradient(white, rgb(236, 238, 238));
 }
+
+.gradientDiv > div > div > div {
+  height: 250px !important;
+}
+
 .nameInput {
   width: 87%;
-  border-right:none;
-  border-left:none;
-  border-top:none;
-  border-bottom: 2px solid rgb(19,115,142);
-  
-  margin-left:15px
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 2px solid rgb(19, 115, 142);
+
+  margin-left: 15px;
 }
 
 #numberOfPeople {
@@ -131,29 +135,28 @@ h5 {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  border-bottom:1px solid rgb(19,115,142);
-  border-right:none;
-  border-left:none;
-  border-top:none;
+  border-bottom: 1px solid rgb(19, 115, 142);
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
 
 #date {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  border-bottom:1px solid rgb(19,115,142);
-  border-right:none;
-  border-left:none;
-  border-top:none;
-  
+  border-bottom: 1px solid rgb(19, 115, 142);
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
 
-.adminButtonOne{
+.adminButtonOne {
   background-color: rgb(19, 115, 142);
-  border:2px solid black;
-  margin-left:2%;
-  margin-right:2%;
-  border-radius:18%;
+  border: 2px solid black;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 18%;
 }
 
 #time {
@@ -168,14 +171,20 @@ h5 {
 }
 
 #mapLocation {
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(19, 115, 142);
   margin-top: -28px;
-  margin-left: 85px;
-  font-weight: bolder;
+  margin-left: 65px;
+  font-family: open-sans;
+  font-size: 18px;
+  color: white;
   position: absolute;
-  width: 150px;
-  height: 27px;
-  border: 1px solid black;
+  width: 284px;
+  height: 35px;
+  border: none;
+}
+
+#mapLocation img {
+  margin-right: 9px;
 }
 
 #location {
@@ -212,9 +221,9 @@ h5 {
   align-items: center;
   height: 100vh;
 }
-.homelessNeeds{
-  background-color: rgba(19,115,142,.5);
-  width:45%;
+.homelessNeeds {
+  background-color: rgba(19, 115, 142, 0.5);
+  width: 45%;
   margin-bottom: 2%;
   display: inline-block;
   margin-left: 1%;
@@ -243,7 +252,7 @@ h5 {
   height: 74px;
   margin-right: 19px;
   margin-left: 19px;
-  background-color: whitesmoke
+  background-color: whitesmoke;
 }
 .cameraImg {
   width: 208px;

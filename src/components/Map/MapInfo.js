@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Autocomplete from "react-google-autocomplete";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import Autocomplete from "react-google-autocomplete";
 
 const mapStyles = {
   width: "400px",
@@ -10,7 +10,6 @@ const mapStyles = {
 
 export class MapInfo extends Component {
   state = {
-    formattedAddress: null,
     latitude: null,
     longitude: null,
     zoom: 10,
@@ -21,41 +20,14 @@ export class MapInfo extends Component {
     this.props.pushLatLongUp([this.state.latitude, this.state.longitude]);
   }
 
-  getGeoLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        location =>
-          this.setState(
-            {
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude,
-              zoom: 15
-            },
-            this.props.pushLatLongUp([
-              /*this.state.latitude*/ location.coords.latitude,
-              /*this.state.longitude*/ location.coords.longitude
-            ])
-          ),
-        error => this.setState({ locationError: error }),
-        { timeout: 5000 }
-      );
-    } else {
-      this.setState({
-        locationError: "Your browser does not support location services"
-      });
-    }
-  };
-
   render() {
     const { latitude, longitude, zoom } = this.state;
     return (
       <div>
-        <button id="mapLocation" onClick={this.getGeoLocation}>Use current location</button>
         <Autocomplete
-          style={{ width: "90%" }}
+          style={{ width: "100%" }}
           onPlaceSelected={place =>
             this.setState({
-              formattedAddress: place.formatted_address,
               latitude: place.geometry.location.lat(),
               longitude: place.geometry.location.lng(),
               zoom: 15
@@ -65,17 +37,21 @@ export class MapInfo extends Component {
         />
         <Map
           google={this.props.google}
-          zoom={zoom}
+          zoom={this.props.zoom || zoom}
           style={mapStyles}
           initialCenter={{ lat: 34.052235, lng: -118.243683 }}
           center={{
-            lat: latitude,
-            lng: longitude
+            lat: latitude || this.props.lat,
+            lng: longitude || this.props.lng
           }}
         >
-          <Marker position={{ lat: latitude, lng: longitude }} />
+          <Marker
+            position={{
+              lat: latitude || this.props.lat,
+              lng: longitude || this.props.lng
+            }}
+          />
         </Map>
-
       </div>
     );
   }
