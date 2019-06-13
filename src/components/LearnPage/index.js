@@ -3,9 +3,10 @@ import H1 from "../../styles/H1";
 import H2 from "../../styles/H2";
 import LearnArticle from "../../styles/LearnArticle";
 import YouTube from "react-youtube";
+import LearnMorePage from "../../styles/LearnMorePage";
 
 const LearnPage = () => (
-  <div>
+  <LearnMorePage>
     <header>
       <H1>Learn More</H1>
     </header>
@@ -131,7 +132,7 @@ const LearnPage = () => (
         </p>
       </LearnArticle>
     </div>
-  </div>
+  </LearnMorePage>
 );
 
 export default LearnPage;
