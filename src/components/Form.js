@@ -38,10 +38,10 @@ class FormBase extends React.Component {
     const numberOfPeople = document.getElementById("numberOfPeople").value;
 
    
-    const contactInfo = document.getElementById("contactInfo").value;
+    const contactInfo = document.getElementById("phoneOne").value+document.getElementById("phoneTwo").value+document.getElementById("phoneThree").value;
     const descriptionOfSelf = document.getElementById("descriptionOfSelf")
       .value;
-    const reporterInfo = document.getElementById("reporterInfo").value;
+
     const other = document.getElementById("other").value;
     const img = document.getElementById("image").value;
     let newNecessities = [];
@@ -70,7 +70,7 @@ class FormBase extends React.Component {
       numberOfPeople,
       contactInfo,
       descriptionOfSelf,
-      reporterInfo,
+     
       newNecessities,
       status: "pending",
       other,
@@ -202,15 +202,12 @@ class FormBase extends React.Component {
           <input className='nameInput' placeholder="name"/>
           <br />
           <br />
-          <textarea
-            id="contactInfo"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english
-                ? "Contact Info (if possible)"
-                : "Información del contacto"
-            }
-          />
+
+          <br/>
+          <p style={{marginLeft:'15px'}}>Phone Number</p>
+          <div id="phoneNumberDiv">
+              <input id="phoneOne" className='phoneNumber'/>  -<input id="phoneTwo" className='phoneNumber'/>  -<input id='phoneThree' className='phoneNumber'/>
+          </div>
           <br />
         </FormOne>
 
@@ -221,6 +218,8 @@ class FormBase extends React.Component {
           <img className="cameraImg" src='https://cdn1.iconfinder.com/data/icons/iconmart-web-icons-2/64/camera-512.png'/>
           <input type="file" id="image" accept="image/*" capture="camera" />
           <br />
+          <h2>Add a Photo</h2>
+          <h5>Take or upload a photo (optional).  If the person(s) is exhibiting behavior that is endangering themselves or the public, or need immediate medical, call 911 immediately.</h5>
 
           <textarea 
           className='descriptionArea'
@@ -235,7 +234,7 @@ class FormBase extends React.Component {
           <br />
 
           <br />
-          <h5>What the reportee needs:</h5>
+          <h5>Their needs:</h5>
 
           <div className="needList">
             <div

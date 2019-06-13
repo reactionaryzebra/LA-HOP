@@ -29,6 +29,7 @@ class AdminBase extends React.Component {
 
     }
     seeStatus=()=>{
+        if(document.getElementById('getPassword').value=="Justin1!"){
         
         const {firebase, history}=this.props
         const here = this
@@ -52,7 +53,7 @@ class AdminBase extends React.Component {
             console.log("Error getting documents: ", error);
         });
         
-    }
+    }}
 
    
     render() {
@@ -64,14 +65,14 @@ class AdminBase extends React.Component {
             
         <h1>What are the unresolved cases?</h1>
         
-        <input id="uniqueStatus" placeholder="status"/>
+        <input type="password" id="getPassword" placeholder="Password"/>
 
         <button onClick={()=>{this.seeStatus()}}>See status</button>
         
         {this.state.cases
-            ?this.state.cases.map((article,index)=><><h1>{article.docid}</h1>
-                                                    <h2>{article.contactInfo}</h2>
-                                                    <h2>{article.descriptionOfNeeds}</h2>
+            ?this.state.cases.map((article,index)=><><h4>{article.docid}</h4>
+                                                    <h4>{article.contactInfo}</h4>
+                                                    <h4>{article.descriptionOfNeeds}</h4>
                                                     <button onClick={()=>{this.markAsResolved(article.docid,index)}}>Mark as resolved</button>
                                                     
                                                     

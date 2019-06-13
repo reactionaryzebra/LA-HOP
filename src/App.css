@@ -46,6 +46,24 @@ h5{
   text-align: center
 }
 
+.phoneNumber{
+  background-color: rgb(216, 216, 216);
+  border:1px solid black;
+  width:30px;
+  height:30px;
+  margin-left: 10px
+}
+#phoneThree{
+  width:50px
+}
+#numberOfPeople{
+  margin-left:15px
+}
+
+.phoneNumberDiv{
+  margin-left:10px
+}
+
 .circle{
   width:10%;
   height: 10%;
@@ -70,12 +88,17 @@ h5{
   margin-top: -68px;
 }
 .nameInput {
-  width: 100%;
+  width: 87%;
   border-right:none;
   border-left:none;
   border-top:none;
   border-bottom: 2px solid rgb(216,216,216);
-  color:rgb(216,216,216)
+  color:rgb(216,216,216);
+  margin-left:15px
+}
+
+#numberOfPeople{
+  font-size: bold
 }
 
 .App-link {
