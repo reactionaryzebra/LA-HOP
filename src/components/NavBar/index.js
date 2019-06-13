@@ -8,7 +8,10 @@ import Nav from "../../styles/Nav";
 const NavBar = () => (
   <Nav>
     <IoIosKeypad color="white" />
-    <NavLink to={ROUTES.LANDING}>LA-HOP</NavLink>
+    <div>
+      <img src="images/logo.png" />
+      <NavLink to={ROUTES.LANDING}>LA-HOP</NavLink>
+    </div>
     <FaUser color="white" />
   </Nav>
 );
