@@ -15,7 +15,7 @@ const Landing = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 14%;
+    padding: 65px;
     background-image: url("images/landing-header-background.jpg");
     background-size: cover;
     height: 25%;
@@ -45,6 +45,7 @@ const Landing = styled.div`
   .flow-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 44px;
     img {
       height: 54px;
       width: 54px;

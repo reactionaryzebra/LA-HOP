@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-  width: 96vw;
   height: 51px;
   padding: 14px;
   background-image: linear-gradient(
