@@ -24,14 +24,18 @@ const LandingPageBase = props => (
           <img src="images/location-icon.png" />
           <label>Tell us the location of the person(s) in need.</label>
         </div>
-        <div />
+        <div>
+          <img src="images/arrow-right.png" />
+        </div>
         <div>
           <img src="images/person-icon.png" />
           <label>
             Provide their description, needs and optional contact info for them.
           </label>
         </div>
-        <div />
+        <div>
+          <img src="images/arrow-right.png" />
+        </div>
         <div>
           <img src="images/contact-icon.png" />
           <label>

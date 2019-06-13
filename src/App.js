@@ -11,6 +11,7 @@ import ConfirmationPage from "./components/ConfirmationPage";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
 import Status from "./components/Status";
+import Footer from "./components/Footer";
 
 class AppBase extends React.Component {
   state = {
@@ -83,6 +84,7 @@ class AppBase extends React.Component {
             />
           )}
         />
+        <Footer />
       </Router>
     );
   }
