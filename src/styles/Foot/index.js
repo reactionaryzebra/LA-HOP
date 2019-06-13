@@ -8,8 +8,6 @@ const Foot = styled.footer`
   justify-content: center;
   color: white;
   align-items: center;
-  position: absolute;
-  bottom: 0;
 `;
 
 export default Foot;
