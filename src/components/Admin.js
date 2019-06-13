@@ -66,7 +66,7 @@ class AdminBase extends React.Component {
             querySnapshot.forEach(function(doc) {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
-                here.setState({cases: [...here.state.cases, {'docid':doc.id,'address':doc.data().address,'contactInfo': doc.data().contactInfo,'descriptionOfNeeds': doc.data().descriptionOfNeeds}] })
+                here.setState({cases: [...here.state.cases, {'docid':doc.id,'address':doc.data().address,'contactInfo': doc.data().contactInfo,'descriptionOfNeeds': doc.data().descriptionOfNeeds,'descriptionOfSelf':doc.data().descriptionOfSelf,'imageURL':doc.data().imageURL,'location':doc.data().location,'numberOfPeople':doc.data().numberOfPeople}] })
                 // here.state.cases.push({'docid':doc.id,'address':doc.data().address})
                 
                 console.log(doc.data())
@@ -97,17 +97,27 @@ class AdminBase extends React.Component {
         
         <input type="password" id="getPassword" placeholder="Password"/>
 
-        <button onClick={()=>{this.seeStatus()}}>See status</button>
+        <button onClick={()=>{this.seeStatus()}}>Get cases</button>
+        <br/>
+        <br/>
         
         {this.state.cases
-            ?this.state.cases.map((article,index)=><><h4>{article.docid}</h4>
-                                                    <h4>{article.contactInfo}</h4>
-                                                    <h4>{article.descriptionOfNeeds}</h4>
-                                                    <button onClick={()=>{this.markAsResolved(article.docid,index)}}>Contacted</button>
-                                                    <button onClick={()=>{this.markAsAssisted(article.docid,index)}}>Assisted</button>
-                                                    <button onClick={()=>{this.markAsAssisted(article.docid,index)}}>Unfound</button>
+            ?this.state.cases.map((article,index)=><><h4>ID: {article.docid}</h4>
+                                                    <ul>
+                                                    <li>Reportee contact info: {article.contactInfo}</li>
+                                                    <li>Description of needs: {article.descriptionOfNeeds}</li>
+                                                    <li>Number of people: {article.numberOfPeople}</li>
+                                                    <li>Description of reporter: {article.descriptionOfSelf}</li>
+                                                    <li>Image Url: {article.imgURL}</li>
+                                                    <li>Address: {article.address}</li>
+                                                    <li>Location: {article.location}</li>
+                                                    </ul>
+                                                    <button className='adminButtonOne' onClick={()=>{this.markAsResolved(article.docid,index)}}>Contacted</button>
+                                                    <button className='adminButtonOne' onClick={()=>{this.markAsAssisted(article.docid,index)}}>Assisted</button>
+                                                    <button className='adminButtonOne' onClick={()=>{this.markAsUnfound(article.docid,index)}}>Unfound</button>
                                                     
-                                                    
+                                                    <br/>
+                                                    <br/>
                                                     </>)
             :undefined}
         </div>
