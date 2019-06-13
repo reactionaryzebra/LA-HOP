@@ -44,10 +44,10 @@ class StatusBase extends React.Component {
   render() {
     return (
       <div>
-        <h1>Status:</h1>
+        <h1 className='adminHeader'>Status:</h1>
 
         {this.state.personStatus ? (
-          <h5>{this.state.personStatus}</h5>
+          <h5 className='statusIndicator'>{this.state.personStatus}</h5>
         ) : (
           undefined
         )}
