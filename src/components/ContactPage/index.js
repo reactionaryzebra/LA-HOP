@@ -2,6 +2,7 @@ import React from "react";
 import Contact from "../../styles/Contact";
 import Input from "../../styles/Input";
 import FormSubmit from "../../styles/FormSubmit";
+import Button from "../../styles/Button";
 import H1 from "../../styles/H1";
 
 const helpOptions = [
@@ -40,7 +41,7 @@ const ContactPage = () => (
         <Input type="email" placeholder="Your E-Mail" />
         <label>Your Message</label>
         <textarea placeholder="Your Message" />
-        <FormSubmit>Send</FormSubmit>
+        <Button>Send</Button>
       </form>
     </div>
     <H1>Address</H1>
@@ -65,7 +66,7 @@ const ContactPage = () => (
         <h3>(213) 892-0093</h3>
       </div>
     </div>
-    <FormSubmit>JOIN OUR MAILING LIST</FormSubmit>
+    <Button>JOIN OUR MAILING LIST</Button>
   </Contact>
 );
 

@@ -20,15 +20,6 @@ const Landing = styled.div`
     background-size: cover;
     height: 25%;
   }
-  button {
-    border: none;
-    outline: none;
-    background-color: rgb(216, 216, 216);
-    font-size: 18px;
-    width: 65vw;
-    height: 4vh;
-    margin-bottom: 20px;
-  }
   label {
     font-family: open-sans;
     font-size: 12px;
