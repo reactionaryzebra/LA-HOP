@@ -14,42 +14,41 @@ class ConfirmationPage extends Component {
   render() {
     return (
       <Confirmation>
-        <div>
-          <h2>CONFIRMATION</h2>
-          <p>Thank you for submitting your request.</p>
-        </div>
-        <div>
-          <h2>KEEP ME POSTED</h2>
-          <p>
-            If you would like to be notified about the outcome of this request
-            please provide us with some contact information. You will receive a
-            notification shortly.
-          </p>
-          <h4>
-            Or you can type this code into the portal linked from the main page:{" "}
-            {this.props.requestNumber}
-          </h4>
+        <div className="top">
+          <div>
+            <h2>THANK YOU!</h2>
+            <p>
+              Your request has been received and will be referred to a homeless
+              outreach team for follow-up. We appreciate your support in
+              assisting our homeless neighbors.
+            </p>
+          </div>
+          <div>
+            <h2>KEEP ME POSTED</h2>
+            <p>
+              Want to find out what will happen now that you've submitted your
+              request? Provide your contact information, and we'll send you a
+              link where you can see the status of your request.
+            </p>
+          </div>
         </div>
         <FollowupForm setSubmitted={this.setSubmitted} />
         {this.state.submitted && <p>We'll be in touch!</p>}
         <div>
-          <h2>ADDITIONAL RESOURCES</h2>
+          <h2>MORE WAYS TO HELP</h2>
           <div>
-            <div />
-            <a target="_blank" href="https://losangelesmission.org">
-              <h4>Los Angeles Mission</h4>
-            </a>
-            <div />
-            <a target="_blank" href="https://www.downtownwomenscenter.org/">
-              <h4>Downtown Women's Center</h4>
-            </a>
-            <div />
-            <a
-              target="_blank"
-              href="https://www.volunteermatch.org/search?l=Los%20Angeles%2C%20CA%2090001&k=Homeless"
-            >
-              <h4>Volunteer Match</h4>
-            </a>
+            <div>
+              <label>Get Involved</label>
+            </div>
+            <div>
+              <label>Volunteer LA</label>
+            </div>
+            <div>
+              <label>Contact Local Representative</label>
+            </div>
+            <div>
+              <label>Volunteer with Homeful LA</label>
+            </div>
           </div>
         </div>
       </Confirmation>
