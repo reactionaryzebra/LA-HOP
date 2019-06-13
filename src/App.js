@@ -13,6 +13,8 @@ import NavBar from "./components/NavBar";
 import Status from './components/Status'
 import Admin from "./components/Admin";
 
+import Footer from "./components/Footer";
+
 class AppBase extends React.Component {
   state = {
     img: null,
@@ -84,6 +86,7 @@ class AppBase extends React.Component {
             />
           )}
         />
+        <Footer />
       </Router>
     );
   }
