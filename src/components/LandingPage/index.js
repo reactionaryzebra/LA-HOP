@@ -78,7 +78,13 @@ const LandingPageBase = props => (
     >
       Let's Get Started
     </button>
-    <button>Learn More</button>
+    <button
+      onClick={() => {
+        props.history.push("/learn-more");
+      }}
+    >
+      Learn More
+    </button>
   </Landing>
 );
 

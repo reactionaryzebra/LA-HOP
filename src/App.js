@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
+import "antd/dist/antd.css";
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withFirebase } from "./components/Firebase";
+import { withRouter } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 import Camera from "./components/Camera";
 import Form from "./components/Form";
@@ -14,6 +16,9 @@ import Status from './components/Status'
 import Admin from "./components/Admin";
 
 import Footer from "./components/Footer";
+import ContactPage from "./components/ContactPage";
+import LearnPage from "./components/LearnPage";
+import ProgressBar from "./components/ProgressBar";
 
 class AppBase extends React.Component {
   state = {
@@ -42,7 +47,7 @@ class AppBase extends React.Component {
   };
   render() {
     return (
-      <Router>
+      <div>
         <NavBar />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route exact path={ROUTES.REPORT} component={Map} />
@@ -86,8 +91,10 @@ class AppBase extends React.Component {
             />
           )}
         />
-        <Footer />
-      </Router>
+        <Route exact path={ROUTES.CONTACT} component={ContactPage} />
+        <Route exact path={ROUTES.LEARN} component={LearnPage} />
+        {this.props.location.pathname !== ROUTES.CONTACT && <Footer />}
+      </div>
     );
   }
   render(){
@@ -110,6 +117,6 @@ class AppBase extends React.Component {
   );
 }}
 
-const App = withFirebase(AppBase);
+const App = withRouter(withFirebase(AppBase));
 
 export default App;
