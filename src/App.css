@@ -48,6 +48,18 @@
   color:white;
   border:2px solid white
 }
+
+.statusIndicator{
+  width:100%;
+  font-style:italic;
+  font-size:22px;
+  
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color:rgb(19,115,142);
+  color:white;
+  border:2px solid white
+}
 .navBar {
   width: 100%;
   height: 15%;
