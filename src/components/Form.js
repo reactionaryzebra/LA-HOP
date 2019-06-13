@@ -146,6 +146,7 @@ class FormBase extends React.Component {
         <ProgressBar currentStep={this.state.currentStep} />
 
         <FormOne style={{ display: this.state.pageOneVis }}>
+        <div className='gradientDiv'>
           <h1>{this.state.english ? "Location" : "Ubicaccion"}</h1>
           <h5>Tell us where and when you saw the person in need.</h5>
           
@@ -210,11 +211,31 @@ class FormBase extends React.Component {
                 : "descripción de la ubicación"
             }
           />
+          <br/>
+          <br/>
+        <button
+          className="nextButton"
+          style={{ display: this.state.pageOneVis }}
+          onClick={() => {
+            this.setState({
+              pageOneVis: "none",
+              pageTwoVis: "inline",
+              pageThreeVis: "none",
+              currentStep: 1
+            });
+          }}
+        >
+          {this.state.english ? "NEXT" : "Siguiente"}
+        </button>
+          </div>
         </FormOne>
 
         <FormOne style={{ display: this.state.pageTwoVis }}>
-          <h1>{this.state.english ? "Person in Need Details" : "Detalles de personas sin hogar"}</h1>
+          <div className='gradientDiv'>
+          <h1 className="optionalHomeless">{this.state.english ? "Optional: Homeless Contact" : "Detalles de personas sin hogar"}</h1>
           <h5>Tell us more about the person in need and provide optional contact information for them.</h5>
+          <br/>
+          
           <input
             id="numberOfPeople"
             type="number"
@@ -223,7 +244,15 @@ class FormBase extends React.Component {
               this.state.english ? "Number of people" : "número de personas"
             }
           />
-          <br />
+          <br/>
+          <br/>
+          Optional: contact details for homeless person in need.
+          
+          
+          <div className='lightBackground'>
+
+          
+          
           <br/>
           <input className='nameInput' placeholder="name"/>
           <br />
@@ -235,9 +264,30 @@ class FormBase extends React.Component {
               <input id="phoneOne" className='phoneNumber'/>  -<input id="phoneTwo" className='phoneNumber'/>  -<input id='phoneThree' className='phoneNumber'/>
           </div>
           <br />
+          </div>
+          <br/>
+        <br/>
+          <button
+          className="nextButton"
+          style={{ display: this.state.pageTwoVis }}
+          
+          onClick={() => {
+            this.setState({
+              pageOneVis: "none",
+              pageTwoVis: "none",
+              pageThreeVis: "inline",
+              currentStep: 2
+            });
+          }}
+        >
+          {this.state.english ? "NEXT" : "Siguiente"}
+        </button>
+
+          </div>
         </FormOne>
 
         <FormOne style={{ display: this.state.pageThreeVis }}>
+        <div className='gradientDiv'>
           <h2>{this.state.english ? "Person in Need Description" : "Descripción de personas sin hogar"}</h2>
           <h5>Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs.</h5>
           <br />
@@ -376,52 +426,11 @@ class FormBase extends React.Component {
               {this.state.english ? "Submit" : "Enviar"}
             </button>
           </div>
+          </div>
+          
         </FormOne>
         <br />
         <br />
-
-        <button
-          style={{ display: "none" }}
-          onClick={() => {
-            this.setState({
-              pageOneVis: "inline",
-              pageTwoVis: "none",
-              pageThreeVis: "none"
-            });
-          }}
-        >
-          One
-        </button>
-        <button
-          className="nextButton"
-          style={{ display: this.state.pageOneVis }}
-          onClick={() => {
-            this.setState({
-              pageOneVis: "none",
-              pageTwoVis: "inline",
-              pageThreeVis: "none",
-              currentStep: 1
-            });
-          }}
-        >
-          {this.state.english ? "NEXT" : "Siguiente"}
-        </button>
-        
-        <button
-          className="nextButton"
-          style={{ display: this.state.pageTwoVis }}
-          
-          onClick={() => {
-            this.setState({
-              pageOneVis: "none",
-              pageTwoVis: "none",
-              pageThreeVis: "inline",
-              currentStep: 2
-            });
-          }}
-        >
-          {this.state.english ? "NEXT" : "Siguiente"}
-        </button>
       </div>
     );
   }
