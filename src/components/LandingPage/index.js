@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { inherits } from "util";
 import Landing from "../../styles/Landing";
+import H1 from "../../styles/H1";
+import Button from "../../styles/Button";
 
 const LandingPageBase = props => (
   <Landing>
@@ -18,7 +20,7 @@ const LandingPageBase = props => (
       </p>
     </header>
     <div className="middle">
-      <h2>How You Can Help</h2>
+      <H1>How You Can Help</H1>
       <div className="flow-container">
         <div>
           <img src="images/location-icon.png" />
@@ -71,20 +73,20 @@ const LandingPageBase = props => (
         </p>
       </div>
     </div>
-    <button
+    <Button
       onClick={() => {
         props.history.push("/form");
       }}
     >
-      Let's Get Started
-    </button>
-    <button
+      MAKE A REQUEST
+    </Button>
+    <Button
       onClick={() => {
         props.history.push("/learn-more");
       }}
     >
-      Learn More
-    </button>
+      LEARN MORE
+    </Button>
   </Landing>
 );
 

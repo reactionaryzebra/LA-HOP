@@ -6,6 +6,11 @@ const Landing = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  button {
+    width: 269px;
+    height: 46px;
+    margin-bottom: 20px;
+  }
   header {
     font-family: Raleway;
     font-size: 18px;
