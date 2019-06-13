@@ -233,7 +233,7 @@ class FormBase extends React.Component {
         <FormOne style={{ display: this.state.pageTwoVis }}>
           <div className='gradientDiv'>
           <h1 className="optionalHomeless">{this.state.english ? "Optional: Homeless Contact" : "Detalles de personas sin hogar"}</h1>
-          <h5>Tell us more about the person in need and provide optional contact information for them.</h5>
+          <h5>{this.state.english?"Tell us more about the person in need and provide optional contact information for them.":"Díganos más acerca de la persona que lo necesita y bríndeles información de contacto opcional."}</h5>
           <br/>
           
           <input
@@ -246,7 +246,7 @@ class FormBase extends React.Component {
           />
           <br/>
           <br/>
-          Optional: contact details for homeless person in need.
+          {this.state.english?"Optional: contact details for homeless person in need.":"Opcional: datos de contacto para personas sin hogar en necesidad"}
           
           
           <div className='lightBackground'>
@@ -259,7 +259,7 @@ class FormBase extends React.Component {
           <br />
 
           <br/>
-          <p style={{marginLeft:'15px'}}>Phone Number</p>
+          <p style={{marginLeft:'15px'}}>{this.state.english?"Phone Number":"Número de teléfono"}</p>
           <div id="phoneNumberDiv">
               <input id="phoneOne" className='phoneNumber'/>  -<input id="phoneTwo" className='phoneNumber'/>  -<input id='phoneThree' className='phoneNumber'/>
           </div>
@@ -289,13 +289,13 @@ class FormBase extends React.Component {
         <FormOne style={{ display: this.state.pageThreeVis }}>
         <div className='gradientDiv'>
           <h2>{this.state.english ? "Person in Need Description" : "Descripción de personas sin hogar"}</h2>
-          <h5>Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs.</h5>
+          <h5>{this.state.english?"Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs.":"Proporcione una descripción detallada de la (s) persona (s) que necesita la apariencia física y su mejor evaluación de sus necesidades."}</h5>
           <br />
           <img className="cameraImg" src='https://cdn1.iconfinder.com/data/icons/iconmart-web-icons-2/64/camera-512.png'/>
           <input type="file" id="image" accept="image/*" capture="camera" />
           <br />
-          <h2>Add a Photo</h2>
-          <h5>Take or upload a photo (optional).  If the person(s) is exhibiting behavior that is endangering themselves or the public, or need immediate medical, call 911 immediately.</h5>
+          <h2>{this.state.english?"Add a Photo":"Agregar una foto"}</h2>
+          <h5>{this.state.english?'Take or upload a photo (optional).  If the person(s) is exhibiting behavior that is endangering themselves or the public, or need immediate medical, call 911 immediately.':'Toma o sube una foto (opcional). Si la (s) persona (s) muestra un comportamiento que pone en peligro a sí mismo o al público, o necesita atención médica inmediata, llame al 911 inmediatamente.'}</h5>
 
           <textarea 
           className='descriptionArea'
@@ -310,7 +310,7 @@ class FormBase extends React.Component {
           <br />
 
           <br />
-          <h5>Their needs:</h5>
+          <h5>{this.state.english?'Their needs:':'Sus necesidades:'}</h5>
 
           <div className="needList">
             <div
@@ -416,7 +416,7 @@ class FormBase extends React.Component {
               placeholder={this.state.english ? "other:" : "otro:"}
             />
             <br/>
-            <input type="checkbox"/>I have read and understand the Learn More section.
+            <input type="checkbox"/>{this.state.english?'I have read and understand the Learn More section.':'He leído y entiendo la sección Aprende más.'}
 
             <button
               className="nextButton"
