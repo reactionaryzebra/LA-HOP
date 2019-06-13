@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Landing = styled.div`
   font-family: open-sans;
-  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
