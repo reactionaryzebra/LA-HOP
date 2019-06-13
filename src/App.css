@@ -21,7 +21,7 @@
 
 .nextButton{
   width:100%;
-  background-color:grey;
+  background-color:rgb(216,216,216);
   color:black;
   border:2px solid black
 }
@@ -34,6 +34,16 @@
   color:black;
   border:5px solid black
 
+}
+
+h1{
+  text-align: center
+}
+h2{
+  text-align: center
+}
+h5{
+  text-align: center
 }
 
 .circle{
@@ -52,10 +62,20 @@
   background-color: gray;
   display:inline-block
 }
-img{
+.flagIcon{
   height:10%;
   width:10%;
-  float:right
+  float:right;
+  margin-right:30px;
+  margin-top: -68px;
+}
+.nameInput {
+  width: 100%;
+  border-right:none;
+  border-left:none;
+  border-top:none;
+  border-bottom: 2px solid rgb(216,216,216);
+  color:rgb(216,216,216)
 }
 
 .App-link {
@@ -99,4 +119,28 @@ img{
   margin-left: 1%;
   text-align:center;
   border:2px solid black
+}
+.otherInput{
+  border-bottom: 1px solid rgb(216,216,216);
+  width:100%;
+  border-left:none;
+  border-right:none;
+  border-top:none;
+  
+}
+
+.descriptionArea{
+  width:322px;
+  height:74px;
+  margin-right: 19px;
+  margin-left: 19px;
+  background-color: rgb(216, 216, 216)
+}
+.cameraImg{
+  width:208px;
+  height:160px;
+  margin-right: 90px;
+  margin-bottom: 30px;
+  margin-top:-20px;
+  margin-left:70px
 }

@@ -9,7 +9,8 @@ class FollowupFormBase extends Component {
     fullName: "",
     email: "",
     phone: "",
-    description: ""
+    description: "",
+    error: null
   };
 
   handleChange = e => {
@@ -23,7 +24,7 @@ class FollowupFormBase extends Component {
       console.log("success");
       setSubmitted(true);
     } catch (error) {
-      console.log("error");
+      this.setState({ error });
     }
   };
 

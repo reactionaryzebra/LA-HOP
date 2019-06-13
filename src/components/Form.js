@@ -36,10 +36,8 @@ class FormBase extends React.Component {
     const date = document.getElementById("date").value;
     const location = document.getElementById("location").value;
     const numberOfPeople = document.getElementById("numberOfPeople").value;
-    const descriptionOfPerson = document.getElementById("descriptionOfPerson")
-      .value;
-    const descriptionOfNeeds = document.getElementById("descriptionOfNeeds")
-      .value;
+
+   
     const contactInfo = document.getElementById("contactInfo").value;
     const descriptionOfSelf = document.getElementById("descriptionOfSelf")
       .value;
@@ -65,14 +63,11 @@ class FormBase extends React.Component {
     if (this.state.shoes) {
       newNecessities.push("shoes");
     }
-    //console.log(address+date+newNecessities)
     const objectToSend = {
       address,
       date,
       location,
       numberOfPeople,
-      descriptionOfPerson,
-      descriptionOfNeeds,
       contactInfo,
       descriptionOfSelf,
       reporterInfo,
@@ -81,8 +76,7 @@ class FormBase extends React.Component {
       other,
       coordinates: this.props.coordinates
     };
-    console.log(objectToSend, "<-----object to send");
-    const here = this
+    const here = this;
     const { firebase, history } = this.props;
     const imgFile = new File([img], "picture.jpg", { type: "image/jpeg" });
     firebase.storage
@@ -97,11 +91,9 @@ class FormBase extends React.Component {
           .then(function(docRef) {
             here.props.pushRequestNumberUp(docRef.id);
             console.log("Document written with ID: ", docRef.id);
-        })
+          })
       );
     history.push("/confirmation");
-
-    //console.log(this.props.img,'<----this.props.img')
   };
 
   componentDidMount() {
@@ -116,35 +108,41 @@ class FormBase extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.english?<img
-          style={{
-            display: this.state.english ? "inlineBlock" : "inlineBlock"
-          }}
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
-          onClick={() => {
-            this.setState({
-              english: true
-            });
-            console.log(this.state.english, "<--this.state.english");
-            console.log(this.state.spanish, "<---this.state.spanish");
-          }}
-        />:undefined}
-        {this.state.english?<img
-          style={{
-            display: !this.state.english ? "inlineBlock" : "inlineBlock"
-          }}
-          src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg"
-          onClick={() => {
-            this.setState({
-              english: false
-            });
-            console.log(this.state.english, "<--this.state.english");
-            console.log(this.state.spanish, "<---this.state.spanish");
-          }}
-        />:undefined}
+        {!this.state.english ? (
+          <img
+            className="flagIcon"
+            style={{
+              display: this.state.english ? "inlineBlock" : "inlineBlock"
+            }}
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
+            onClick={() => {
+              this.setState({
+                english: true
+              });
+            }}
+          />
+        ) : (
+          undefined
+        )}
+        {this.state.english ? (
+          <img
+            className="flagIcon"
+            style={{
+              display: !this.state.english ? "inlineBlock" : "inlineBlock"
+            }}
+            src="https://images-na.ssl-images-amazon.com/images/I/61sIDOD1ajL._SL1500_.jpg"
+            onClick={() => {
+              this.setState({
+                english: false
+              });
+            }}
+          />
+        ) : (
+          undefined
+        )}
 
         <FormOne style={{ display: this.state.pageOneVis }}>
-          <h1>{this.state.english ? "Page One" : "Pagino Uno"}</h1>
+          <h1>{this.state.english ? "Location" : "Ubicaccion"}</h1>
           <br />
           <Map pushLatLongUp={this.props.pushLatLongUp} />
           <br />
@@ -189,7 +187,8 @@ class FormBase extends React.Component {
         </FormOne>
 
         <FormOne style={{ display: this.state.pageTwoVis }}>
-          <h1>{this.state.english ? "Page Two" : "Página dos"}</h1>
+          <h1>{this.state.english ? "Person in Need Details" : "Detalles de personas sin hogar"}</h1>
+          <h5>Tell us more about the person in need and provide optional contact information for them.</h5>
           <input
             id="numberOfPeople"
             type="number"
@@ -199,25 +198,9 @@ class FormBase extends React.Component {
             }
           />
           <br />
-          <textarea
-            id="descriptionOfPerson"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english
-                ? "Description of person"
-                : "descripción de la persona"
-            }
-          />
+          <br/>
+          <input className='nameInput' placeholder="name"/>
           <br />
-          <textarea
-            id="descriptionOfNeeds"
-            style={{ display: this.state.pageTwoVis }}
-            placeholder={
-              this.state.english
-                ? "Description of needs"
-                : "descripción de las necesidades"
-            }
-          />
           <br />
           <textarea
             id="contactInfo"
@@ -232,12 +215,15 @@ class FormBase extends React.Component {
         </FormOne>
 
         <FormOne style={{ display: this.state.pageThreeVis }}>
-          <h1>{this.state.english ? "Page Three" : "Página tres"}</h1>
+          <h2>{this.state.english ? "Person in Need Description" : "Descripción de personas sin hogar"}</h2>
+          <h5>Provide as detailed a description of the person(s) in need physical appearance, and your best assessment of their needs.</h5>
           <br />
+          <img className="cameraImg" src='https://cdn1.iconfinder.com/data/icons/iconmart-web-icons-2/64/camera-512.png'/>
           <input type="file" id="image" accept="image/*" capture="camera" />
           <br />
 
-          <textarea
+          <textarea 
+          className='descriptionArea'
             id="descriptionOfSelf"
             style={{ display: this.state.pageThreeVis }}
             placeholder={
@@ -247,15 +233,7 @@ class FormBase extends React.Component {
             }
           />
           <br />
-          <input
-            id="reporterInfo"
-            style={{ display: this.state.pageThreeVis }}
-            placeholder={
-              this.state.english
-                ? "Reporter contact info"
-                : "informacion de contacto del reportero"
-            }
-          />
+
           <br />
           <h5>What the reportee needs:</h5>
 
@@ -356,10 +334,14 @@ class FormBase extends React.Component {
             >
               {this.state.english ? "shoes" : "los zapatos"}
             </div>
+            
             <input
+                className='otherInput'
               id="other"
               placeholder={this.state.english ? "other:" : "otro:"}
             />
+            <br/>
+            <input type="checkbox"/>I have read and understand the Learn More section.
 
             <button
               className="nextButton"
@@ -398,9 +380,11 @@ class FormBase extends React.Component {
         >
           {this.state.english ? "NEXT" : "Siguiente"}
         </button>
+        
         <button
           className="nextButton"
           style={{ display: this.state.pageTwoVis }}
+          
           onClick={() => {
             this.setState({
               pageOneVis: "none",
