@@ -122,6 +122,14 @@ h5{
   color:rgb(216, 216, 216)
 }
 
+.adminButtonOne{
+  background-color: rgb(216, 216, 216);
+  border:2px solid black;
+  margin-left:2%;
+  margin-right:2%;
+  border-radius:18%;
+}
+
 #time{
   width:90%;
   margin-left: 5%;
