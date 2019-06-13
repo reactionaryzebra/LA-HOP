@@ -6,3 +6,4 @@ export const CAMERA = "/camera";
 export const FORM = "/form";
 export const STATUS = "/status";
 export const CONTACT = "/contact";
+export const LEARN = "/learn-more";

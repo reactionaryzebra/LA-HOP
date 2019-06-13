@@ -14,6 +14,7 @@ import NavBar from "./components/NavBar";
 import Status from "./components/Status";
 import Footer from "./components/Footer";
 import ContactPage from "./components/ContactPage";
+import LearnPage from "./components/LearnPage";
 
 class AppBase extends React.Component {
   state = {
@@ -87,6 +88,7 @@ class AppBase extends React.Component {
           )}
         />
         <Route exact path={ROUTES.CONTACT} component={ContactPage} />
+        <Route exact path={ROUTES.LEARN} component={LearnPage} />
         {this.props.location.pathname !== ROUTES.CONTACT && <Footer />}
       </div>
     );
