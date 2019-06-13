@@ -3,6 +3,7 @@ import "./App.css";
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withFirebase } from "./components/Firebase";
+import { withRouter } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 import Camera from "./components/Camera";
 import Form from "./components/Form";
@@ -12,6 +13,7 @@ import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
 import Status from "./components/Status";
 import Footer from "./components/Footer";
+import ContactPage from "./components/ContactPage";
 
 class AppBase extends React.Component {
   state = {
@@ -40,7 +42,7 @@ class AppBase extends React.Component {
   };
   render() {
     return (
-      <Router>
+      <div>
         <NavBar />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route exact path={ROUTES.REPORT} component={Map} />
@@ -84,12 +86,13 @@ class AppBase extends React.Component {
             />
           )}
         />
-        <Footer />
-      </Router>
+        <Route exact path={ROUTES.CONTACT} component={ContactPage} />
+        {this.props.location.pathname !== ROUTES.CONTACT && <Footer />}
+      </div>
     );
   }
 }
 
-const App = withFirebase(AppBase);
+const App = withRouter(withFirebase(AppBase));
 
 export default App;
