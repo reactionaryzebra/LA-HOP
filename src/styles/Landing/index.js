@@ -6,6 +6,11 @@ const Landing = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  button {
+    width: 269px;
+    height: 46px;
+    margin-bottom: 20px;
+  }
   header {
     font-family: Raleway;
     font-size: 18px;
@@ -19,15 +24,6 @@ const Landing = styled.div`
     background-image: url("images/landing-header-background.jpg");
     background-size: cover;
     height: 25%;
-  }
-  button {
-    border: none;
-    outline: none;
-    background-color: rgb(216, 216, 216);
-    font-size: 18px;
-    width: 65vw;
-    height: 4vh;
-    margin-bottom: 20px;
   }
   label {
     font-family: open-sans;

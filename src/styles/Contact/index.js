@@ -6,6 +6,13 @@ const Contact = styled.div`
   align-items: center;
   text-align: center;
   font-family: open-sans;
+  button {
+    width: 376px;
+    height: 37px;
+    margin-top: 19px;
+    margin-bottom: 47px;
+  }
+
   header {
     display: flex;
     flex-direction: column;
