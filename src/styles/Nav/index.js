@@ -6,6 +6,16 @@ const Nav = styled.nav`
   height: 51px;
   padding: 14px;
   background-image: linear-gradient(rgb(23, 162, 184), rgb(10, 121, 162));
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 215px;
+  }
+  img {
+    width: 80px;
+    height: 60px;
+  }
   a {
     display: flex;
     align-items: center;
