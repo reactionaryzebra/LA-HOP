@@ -7,9 +7,9 @@ import Nav from "../../styles/Nav";
 
 const NavBar = () => (
   <Nav>
-    <IoIosKeypad />
+    <IoIosKeypad color="white" />
     <NavLink to={ROUTES.LANDING}>LA-HOP</NavLink>
-    <FaUser />
+    <FaUser color="white" />
   </Nav>
 );
 
