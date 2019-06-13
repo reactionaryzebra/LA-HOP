@@ -77,7 +77,7 @@ class FormBase extends React.Component {
       descriptionOfSelf,
       reporterInfo,
       newNecessities,
-      status: "contacted and helped! :)",
+      status: "pending",
       other,
       coordinates: this.props.coordinates
     };
