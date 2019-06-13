@@ -25,11 +25,11 @@ class StatusBase extends React.Component {
     personStatus: null
   };
   seeStatus = num => {
-    const { firebase, history } = this.props;
+    const { firebase, history, match } = this.props;
     const here = this;
     firebase.db
       .collection("requests")
-      .doc(num.toString())
+      .doc(match.params.id)
       .get()
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.data().status);
@@ -37,20 +37,17 @@ class StatusBase extends React.Component {
       });
   };
 
+  componentDidMount(){
+      this.seeStatus(10)
+  }
+
   render() {
     return (
       <div>
-        <h1>What is the Status?</h1>
-        <input id="uniqueStatus" placeholder="status" />
-        <button
-          onClick={() => {
-            this.seeStatus(document.getElementById("uniqueStatus").value);
-          }}
-        >
-          See status
-        </button>
+        <h1>Status:</h1>
+
         {this.state.personStatus ? (
-          <h4>{this.state.personStatus}</h4>
+          <h5>{this.state.personStatus}</h5>
         ) : (
           undefined
         )}

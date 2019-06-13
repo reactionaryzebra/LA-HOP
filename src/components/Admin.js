@@ -105,7 +105,7 @@ class AdminBase extends React.Component {
                                                     <h4>{article.descriptionOfNeeds}</h4>
                                                     <button onClick={()=>{this.markAsResolved(article.docid,index)}}>Contacted</button>
                                                     <button onClick={()=>{this.markAsAssisted(article.docid,index)}}>Assisted</button>
-                                                    <button onClick={()=>{this.markAsAssisted(article.docid,index)}}>Unfound</button>
+                                                    <button onClick={()=>{this.markAsUnfound(article.docid,index)}}>Unfound</button>
                                                     
                                                     
                                                     </>)
