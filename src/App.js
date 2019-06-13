@@ -12,9 +12,8 @@ import Form from "./components/Form";
 import ConfirmationPage from "./components/ConfirmationPage";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
-import Status from './components/Status'
+import Status from "./components/Status";
 import Admin from "./components/Admin";
-
 import Footer from "./components/Footer";
 import ContactPage from "./components/ContactPage";
 import LearnPage from "./components/LearnPage";
@@ -97,25 +96,7 @@ class AppBase extends React.Component {
       </div>
     );
   }
-  render(){
-  return (
-    <Router>
-      <NavBar />
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route exact path={ROUTES.REPORT} component={Map} />
-      <Route exact path={ROUTES.CONFIRMATION} requestNumber={this.state.requestNumber} render={() => <ConfirmationPage requestNumber={this.state.requestNumber}/>} />
-      <Route
-        exact
-        path={ROUTES.REPORT_TRACKER}
-        render={() => <div>Route Tracker</div>}
-      />
-      <Route exact path={ROUTES.CAMERA} render={() => <Camera />} />
-      <Route exact path={ROUTES.FORM} render={() => <Form pushRequestNumberUp={this.pushRequestNumberUp} coordinates={this.state.coordinates} pushLatLongUp={this.pushLatLongUp} img={this.state.img} pushImgUp={this.pushImgUp}/>} />
-      <Route exact path={ROUTES.STATUS} render={() => <Status pushRequestNumberUp={this.pushRequestNumberUp} coordinates={this.state.coordinates} pushLatLongUp={this.pushLatLongUp} img={this.state.img} pushImgUp={this.pushImgUp}/>} />
-      <Route exact path={ROUTES.ADMIN} render={() => <Admin pushRequestNumberUp={this.pushRequestNumberUp} coordinates={this.state.coordinates} pushLatLongUp={this.pushLatLongUp} img={this.state.img} pushImgUp={this.pushImgUp}/>} />
-    </Router>
-  );
-}}
+}
 
 const App = withRouter(withFirebase(AppBase));
 

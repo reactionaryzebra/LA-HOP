@@ -2,6 +2,7 @@ import React from "react";
 import Contact from "../../styles/Contact";
 import Input from "../../styles/Input";
 import FormSubmit from "../../styles/FormSubmit";
+import H1 from "../../styles/H1";
 
 const helpOptions = [
   { value: "dashboards", display: "Dashboards" },
@@ -21,12 +22,12 @@ const ContactPage = () => (
   <Contact>
     <header>
       <div>
-        <h2>Contact Us</h2>
+        <H1>Contact Us</H1>
         <p>We want to hear from you!</p>
       </div>
     </header>
     <img src="images/ContactImage.png" />
-    <h2>Message Us</h2>
+    <H1>Message Us</H1>
     <div className="messageUs">
       <form>
         <label>What can we help you with?</label>
@@ -42,12 +43,7 @@ const ContactPage = () => (
         <FormSubmit>Send</FormSubmit>
       </form>
     </div>
-    <h2>Contact Us</h2>
-    <p>
-      Question, comment or concern? Our contact form is the best way to get in
-      touch with someone at LAHSA.
-    </p>
-    <h2>Address</h2>
+    <H1>Address</H1>
     <p>
       811 Wilshire Blvd.
       <br />

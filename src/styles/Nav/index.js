@@ -5,11 +5,10 @@ const Nav = styled.nav`
   justify-content: space-between;
   height: 51px;
   padding: 14px;
-  background-image: linear-gradient(
-    rgba(125, 125, 125, 0.5),
-    rgba(70, 70, 70, 0.5)
-  );
+  background-image: linear-gradient(rgb(23, 162, 184), rgb(10, 121, 162));
   a {
+    display: flex;
+    align-items: center;
     color: white;
     font-family: Raleway;
     font-size: 30px;
