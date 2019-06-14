@@ -53,7 +53,6 @@ class AppBase extends React.Component {
         <Route
           exact
           path={ROUTES.CONFIRMATION}
-          requestNumber={this.state.requestNumber}
           render={() => (
             <ConfirmationPage requestNumber={this.state.requestNumber} />
           )}
