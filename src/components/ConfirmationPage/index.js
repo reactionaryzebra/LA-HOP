@@ -40,7 +40,7 @@ class ConfirmationPage extends Component {
             <p className={"confirmationMessage"}>
               Check on the progress
               <a
-                href={`https://la-hop.firebaseapp.com/status/${this.props.requestNumber}`}
+                href={`https://la-hop.firebaseapp.com/status/6z35VXSfMRMLoAOPZEyp`}
               >
                 here
               </a>
