@@ -4,6 +4,7 @@ import FollowUp from "../../styles/FollowUp";
 import Input from "../../styles/Input";
 import Select from "../../styles/Select";
 import FormSubmit from "../../styles/FormSubmit";
+import Button from "../../styles/Button";
 
 const describeOptions = [
   { display: "Concerned Resident", value: "resident" },
@@ -82,9 +83,9 @@ class FollowupFormBase extends Component {
             <option value={option.value}>{option.display}</option>
           ))}
         </Select>
-        <FormSubmit disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} type="submit">
           COMPLETE
-        </FormSubmit>
+        </Button>
       </FollowUp>
     );
   }
