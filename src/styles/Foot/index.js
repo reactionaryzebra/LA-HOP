@@ -8,7 +8,7 @@ const Foot = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: open-sans;
+  font-family: "Open Sans";
   font-size: 12px;
   letter-spacing: 3px;
   position: absolute;

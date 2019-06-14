@@ -8,7 +8,7 @@ const LearnArticle = styled.div`
   margin-left: 18px;
   margin-right: 18px;
   p {
-    font-family: open-sans;
+    font-family: "Open Sans";
     font-size: 12px;
   }
 `;

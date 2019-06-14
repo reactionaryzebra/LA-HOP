@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Landing = styled.div`
-  font-family: open-sans;
+  font-family: "Open Sans";
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ const Landing = styled.div`
     height: 25%;
   }
   label {
-    font-family: open-sans;
+    font-family: "Open Sans";
     font-size: 12px;
   }
   .middle {

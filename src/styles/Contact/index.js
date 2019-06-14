@@ -5,7 +5,7 @@ const Contact = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-family: open-sans;
+  font-family: "Open Sans";
   button {
     width: 376px;
     height: 37px;
