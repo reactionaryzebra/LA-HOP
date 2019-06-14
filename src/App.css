@@ -221,7 +221,7 @@ h5 {
 
 #mapLocation {
   background-color: rgb(19, 115, 142);
-  margin-top: -28px;
+  margin-top: -75px;
   margin-left: 65px;
   font-family: "Open Sans";
   font-size: 18px;
@@ -271,22 +271,22 @@ h5 {
   height: 100vh;
 }
 .homelessNeeds {
-  background-color: rgba(19, 115, 142, 0.5);
+  background-color: rgb(133, 181, 194);
   width: 45%;
   margin-bottom: 2%;
   display: inline-block;
   margin-left: 1%;
   text-align: center;
-  border: 2px solid black;
+  color: white;
 }
 .homelessNeedsClicked {
-  background-color: grey;
+  background-color: rgb(19, 115, 142);
   width: 45%;
   margin-bottom: 2%;
   display: inline-block;
   margin-left: 1%;
   text-align: center;
-  border: 2px solid black;
+  color: white;
 }
 .otherInput {
   border-bottom: 1px solid rgb(216, 216, 216);

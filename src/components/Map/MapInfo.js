@@ -25,7 +25,7 @@ export class MapInfo extends Component {
     return (
       <div>
         <Autocomplete
-          style={{ width: "100%" }}
+          style={{ width: "100%", marginBottom: "20px", marginTop: "10px" }}
           onPlaceSelected={place =>
             this.setState({
               latitude: place.geometry.location.lat(),
