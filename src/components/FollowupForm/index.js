@@ -54,7 +54,7 @@ class FollowupFormBase extends Component {
           name="fullName"
           value={fullName}
           onChange={this.handleChange}
-          placeholder="Name"
+          placeholder="Name*"
         />
         <Input
           type="text"
@@ -68,14 +68,14 @@ class FollowupFormBase extends Component {
           name="email"
           value={email}
           onChange={this.handleChange}
-          placeholder="email"
+          placeholder="Email*"
         />
         <Input
           type="tel"
           name="phone"
           value={phone}
           onChange={this.handleChange}
-          placeholder="Phone #"
+          placeholder="Phone Number*"
         />
         <Select>
           <option>Describe yourself...</option>
